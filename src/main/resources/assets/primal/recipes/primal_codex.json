@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        " S ",
+        " S "
+    ],
+    "key": {
+        "S": {
+            "item": "primal:ingot_copper"
+        }
+    },
+    "result": {
+        "item": "primal:primal_codex"
+    }
+}

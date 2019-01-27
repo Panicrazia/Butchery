@@ -1,0 +1,16 @@
+[
+{
+  "modid": "primal",
+  "name": "Primal",
+  "description": "some random ass text to see if it is just this easy",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Lezarius"],
+  "credits": "Viewers like you!",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

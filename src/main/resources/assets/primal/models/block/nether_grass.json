@@ -1,0 +1,9 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "particle": "primal:blocks/nether_grass_side",
+        "bottom": "blocks/netherrack",
+        "top": "primal:blocks/nether_grass_top",
+        "side": "primal:blocks/nether_grass_side"
+    }
+}

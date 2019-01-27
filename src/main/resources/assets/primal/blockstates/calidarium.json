@@ -1,0 +1,19 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube_all",
+        "textures": {
+            "all": "primal:blocks/metal_plate"
+        }
+    },
+    "variants": {
+        "normal": [{}],
+        "inventory": [{}],
+        "level": {
+            "0":    {},
+            "1":    {},
+            "2":    {},
+            "3":    {}
+        }
+    }
+}

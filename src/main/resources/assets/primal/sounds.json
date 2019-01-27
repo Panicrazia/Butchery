@@ -1,0 +1,10 @@
+{
+    "machete.chop":
+    {
+        "category": "block",
+        "sounds":
+        [
+            "primal:machete_chop"
+        ]
+    }
+}

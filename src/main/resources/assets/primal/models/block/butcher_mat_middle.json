@@ -1,0 +1,27 @@
+{
+	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
+	"textures": {
+		"1": "primal:blocks/butcher_mat_middle",
+		"particle": "primal:blocks/butcher_mat_middle"
+	},
+	"elements": [
+		{
+			"name": "cube",
+			"from": [0, 15.5, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 1], "texture": "#1"},
+				"east": {"uv": [0, 0, 16, 1], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 1], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 1], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"down": {
+					"uv": [0, 0, 16, 16],
+					"texture": "#1",
+					"rotation": 180
+				}
+			},
+			"type": "cube"
+		}
+	]
+}

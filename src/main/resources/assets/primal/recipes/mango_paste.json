@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "C",
+        "S",
+        "C"
+    ],
+    "key": {
+        "S": {
+            "item": "primal:mango"
+        },
+        "C": {
+            "item": "minecraft:cobblestone"
+        }
+    },
+    "result": {
+        "item": "primal:mango_paste"
+    }
+}

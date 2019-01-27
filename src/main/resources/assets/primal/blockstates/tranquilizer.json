@@ -1,0 +1,22 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "builtin/generated",
+        "transform": "forge:default-item"
+    },
+    "variants": {
+        "meta": {
+            "0": {
+                "textures": {
+                    "layer0": "primal:items/lunar_lilly"
+                }
+            },
+            "1": {
+                "textures": {
+                    "layer0": "primal:items/drugged_meat"
+                }
+            }
+            
+        }
+    }
+}

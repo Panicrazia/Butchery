@@ -1,0 +1,57 @@
+# Items
+item.ingot_copper.name=Copper Ingot
+item.primal_codex.name=Primal Codex
+item.divination_rod.name=Divination Rod
+item.tuning_fork.name=Tuning Fork
+item.butcher_cleaver.name=Butchers Cleaver
+item.mango_seed.name=Mango Seeds
+item.mango.name=Mango
+item.mango_paste.name=Mango Paste
+item.lunar_seed.name=Lunar Seeds
+item.tranquilizer.0.name=Lunar Lilly
+item.tranquilizer.1.name=Drugged Meat
+item.lunar_lilly_dust.name=Sleeping Powder
+item.ornate_rod.name=Ornate Stone Rod
+item.item_rune.0.name=Rune Base
+item.item_rune.1.name=Air Rune
+item.item_rune.2.name=Fire Rune
+item.item_rune.3.name=Earth Rune
+item.item_rune.4.name=Water Rune
+item.item_rune.5.name=Arcane Rune
+item.item_rune.6.name=Ether Rune
+item.item_rune.7.name=Mechanis Rune
+item.item_rune.8.name=Ender Rune
+item.item_rune.9.name=Spritual Rune
+item.item_rune.10.name=Death Rune
+item.butcher_cleaver.name=Butchery Cleaver
+item.item_butcher_mat.name=Butchery Mat
+item.corpse.name=Unidentified Corpse
+item.slime_core.name=Slimey Core
+
+# Tooltips
+tooltip.corpse.nuthin=Nuthin
+tooltip.corpsedesc=%1$s Corpse
+tooltip.partdesc=%1$s
+
+# Blocks
+tile.ore_copper.name=Copper Ore
+tile.classical_wood.name=Fancy Wood
+tile.calidarium.name=Calidarium
+tile.rune_block.name=Rune Block
+tile.nether_grass.name=Nether Spore Grass
+tile.rune_socket.name=Rune Socket
+tile.augment_connection.name=Augment Connector
+tile.lightning_rod.name=Lightning Rod
+tile.butcher_mat.name=Butchers Mat
+tile.block_corpse.name=Corpse
+tile.rotten_flesh_block.name=Block of Rotten Flesh
+tile.rotten_flesh_block_face.name=Rudementary Fleshwork Head
+
+# Potions
+effect.drowsy=Drowsy
+
+# Death messages
+death.attack.PrimalMod.Tranquilized=%1$s is waiting for their prince chamring
+death.attack.PrimalMod.Tranquilized.player=%2$s helped %1$s go to sleep, how nice of them
+
+itemGroup.primal=Primal Forces

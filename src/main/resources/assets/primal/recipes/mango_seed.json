@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "S"
+    ],
+    "key": {
+        "S": {
+            "item": "primal:mango"
+        }
+    },
+    "result": {
+        "item": "primal:mango_seed"
+    }
+}

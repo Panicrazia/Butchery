@@ -1,0 +1,12 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "facing": {
+            "north": { "model": "primal:rotten_flesh_block_face" },
+            "south": { "model": "primal:rotten_flesh_block_face", "y": 180 },
+            "west":  { "model": "primal:rotten_flesh_block_face", "y": 270 },
+            "east":  { "model": "primal:rotten_flesh_block_face", "y": 90 }
+        },
+        "inventory": { "model": "primal:rotten_flesh_block_face" }
+    }
+}

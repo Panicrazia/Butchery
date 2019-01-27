@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  S",
+        " S ",
+        "S  "
+    ],
+    "key": {
+        "S": {
+            "item": "primal:ornate_rod"
+        }
+    },
+    "result": {
+        "item": "primal:divination_rod"
+    }
+}

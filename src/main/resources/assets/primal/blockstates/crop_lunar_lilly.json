@@ -1,0 +1,50 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "primal:crop_lilly0"
+	},
+	"variants": {
+		"age": {
+			"0": {
+				"textures": {
+					"stem": "primal:blocks/lunar_lilly/0"
+				}
+			},
+			"1": {
+				"textures": {
+					"stem": "primal:blocks/lunar_lilly/1"
+				}
+			},
+			"2": {
+				"textures": {
+					"stem": "primal:blocks/lunar_lilly/2"
+				}
+			},
+			"3": {
+				"textures": {
+					"stem": "primal:blocks/lunar_lilly/3"
+				}
+			},
+			"4": {
+				"textures": {
+					"stem": "primal:blocks/lunar_lilly/4"
+				}
+			},
+			"5": {
+				"textures": {
+					"stem": "primal:blocks/lunar_lilly/5"
+				}
+			},
+			"6": {
+				"textures": {
+					"stem": "primal:blocks/lunar_lilly/6"
+				}
+			},
+			"7": {
+				"textures": {
+					"stem": "primal:blocks/lunar_lilly/7"
+				}
+			}
+		}
+	}
+}

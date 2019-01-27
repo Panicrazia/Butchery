@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  G",
+        " S ",
+        "G  "
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:stone",
+            "data": 0
+        },
+        "G": {
+            "item": "minecraft:gold_nugget"
+        }
+    },
+    "result": {
+        "item": "primal:ornate_rod"
+    }
+}
