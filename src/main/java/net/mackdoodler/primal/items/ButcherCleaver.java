@@ -68,7 +68,7 @@ public class ButcherCleaver extends ItemBase{
 						
 						mai.setModified(true);
 						
-						ItemStack core = new ItemStack(PrimalItems.bodyPartBrain, 1);
+						ItemStack core = new ItemStack(ButcheryItems.bodyPartBrain, 1);
 						core.setTagCompound(new NBTTagCompound());
 						core.getTagCompound().setString("partType", "Slimey Core");
 						EntityItem entityitem = new EntityItem(target.getEntityWorld(), target.posX, target.posY, target.posZ, core);

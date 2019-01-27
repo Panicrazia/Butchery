@@ -13,7 +13,7 @@ import net.minecraft.world.IBlockAccess;
 import java.util.Random;
 
 import net.mackdoodler.primal.PrimalMod;
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 
 public class BlockCropLunarLilly extends BlockCrops{
 	
@@ -40,13 +40,13 @@ public class BlockCropLunarLilly extends BlockCrops{
 	
 	@Override
 	protected Item getSeed() {
-		return PrimalItems.lunarSeed;
+		return ButcheryItems.lunarSeed;
 	}
 	
 	@Override
 	protected Item getCrop() {
 		//since itemTranquilizer with a metadata of 0 is the plant we are good
 		//otherwise we would have to modify the damageDropped method from minecraft.block.Block
-		return PrimalItems.itemTranquilizer;
+		return ButcheryItems.itemTranquilizer;
 	}
 }

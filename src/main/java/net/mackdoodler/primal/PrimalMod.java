@@ -3,7 +3,7 @@ package net.mackdoodler.primal;
 import net.mackdoodler.primal.blocks.ModBlocks;
 import net.mackdoodler.primal.handlers.CapabilityHandler;
 import net.mackdoodler.primal.handlers.CorpseHandler;
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 import net.mackdoodler.primal.potions.PotionEventHandler;
 import net.mackdoodler.primal.proxy.CommonProxy;
 import net.minecraft.block.Block;
@@ -106,13 +106,13 @@ public class PrimalMod {
 		
 		@SubscribeEvent
 		public static void registerItems(RegistryEvent.Register<Item> event) {
-			PrimalItems.register(event.getRegistry());
+			ButcheryItems.register(event.getRegistry());
 			ModBlocks.registerItemBlocks(event.getRegistry());
 		}
 		
 		@SubscribeEvent
 		public static void registerItems(ModelRegistryEvent event) {
-			PrimalItems.registerModels();
+			ButcheryItems.registerModels();
 			ModBlocks.registerModels();
 		}
 	}

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import net.mackdoodler.primal.handlers.MobHandler.ButcherEntry;
+import net.mackdoodler.primal.handlers.MobButcheryDropsList.ButcherEntry;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

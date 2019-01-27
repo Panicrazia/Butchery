@@ -3,7 +3,7 @@ package net.mackdoodler.primal.handlers;
 import net.mackdoodler.primal.PrimalMod;
 import net.mackdoodler.primal.capabilities.CapabilityMonsterAI;
 import net.mackdoodler.primal.capabilities.IMonsterAI;
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;

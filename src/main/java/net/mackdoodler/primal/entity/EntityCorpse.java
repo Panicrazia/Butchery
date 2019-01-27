@@ -1,6 +1,6 @@
 package net.mackdoodler.primal.entity;
 
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -48,7 +48,7 @@ public class EntityCorpse extends EntityLivingBase{
     {
         ItemStack itemstack = player.getHeldItem(hand);
 
-        if (itemstack.getItem() == PrimalItems.butcherCleaver)
+        if (itemstack.getItem() == ButcheryItems.butcherCleaver)
         {
         	if(this.getUnharmed()){
 

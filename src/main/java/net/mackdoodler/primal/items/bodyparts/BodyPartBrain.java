@@ -4,7 +4,7 @@ import net.mackdoodler.primal.capabilities.CapabilityMonsterAI;
 import net.mackdoodler.primal.capabilities.IMonsterAI;
 import net.mackdoodler.primal.handlers.CorpseHandler;
 import net.mackdoodler.primal.items.ItemBase;
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 import net.mackdoodler.primal.items.bodyparts.enums.EnumBrainType;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;

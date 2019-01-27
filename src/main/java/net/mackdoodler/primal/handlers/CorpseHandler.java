@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.mackdoodler.primal.items.ItemCorpse;
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 import net.mackdoodler.primal.potions.PrimalPotions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
@@ -160,7 +160,7 @@ public class CorpseHandler {
 				if (entityName != null) {
 					//ItemCorpse corpse = ItemCorpse.TYPES_BY_ID.get(entityName);
 					//if (corpse != null) {
-					ItemStack dropStack = /*corpse.getItemStack();*/new ItemStack(PrimalItems.itemCorpse,1);
+					ItemStack dropStack = /*corpse.getItemStack();*/new ItemStack(ButcheryItems.itemCorpse,1);
 					
 					dropStack.setTagCompound(new NBTTagCompound());
 					

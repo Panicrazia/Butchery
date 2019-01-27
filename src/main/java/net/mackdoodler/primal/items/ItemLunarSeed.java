@@ -8,10 +8,10 @@ import net.minecraft.item.ItemSeeds;
 
 public class ItemLunarSeed extends ItemSeeds{
 	
-	public ItemLunarSeed(){
+	public ItemLunarSeed(String name){
 		super(ModBlocks.cropLunarLilly, Blocks.FARMLAND);
-		setTranslationKey("lunar_seed");
-		setRegistryName("lunar_seed");
+		setTranslationKey(name);
+		setRegistryName(name);
 		
 		setCreativeTab(PrimalMod.creativeTab);
 	}

@@ -3,7 +3,7 @@ package net.mackdoodler.primal.blocks;
 import java.util.ArrayList;
 
 import net.mackdoodler.primal.init.PrimalSoundEvents;
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 import net.mackdoodler.primal.tileentity.TileEntityCorpse;
 import net.mackdoodler.primal.tileentity.TileEntityRuneSocket;
 import net.minecraft.block.Block;

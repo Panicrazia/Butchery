@@ -11,35 +11,36 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class PrimalItems {
+public class ButcheryItems {
 
-	public static ItemBase ingotCopper = new ItemBase("ingot_copper");
-	public static ItemBase ornateRod = new ItemBase("ornate_rod");
-	public static PrimalCodex primalCodex = new PrimalCodex();
+	public static ItemBase ingotCopper = new ItemBase("ingot_copper");	//remove for release
+	public static ItemBase ornateRod = new ItemBase("ornate_rod");	//remove for release
+	public static PrimalCodex primalCodex = new PrimalCodex();	//remove for release
+	public static DivinationRod divinationRod = new DivinationRod();	//remove for release
+	public static TuningFork tuningFork = new TuningFork("tuning_fork");	//remove for release
+	public static ItemRune itemRune = new ItemRune();	//remove for release
+
 	public static ButcherCleaver butcherCleaver = new ButcherCleaver("butcher_cleaver");
-	public static DivinationRod divinationRod = new DivinationRod();
-	public static TuningFork tuningFork = new TuningFork("tuning_fork");
-	
-	public static ItemRune itemRune = new ItemRune();
 	public static ItemButcherMat itemButcherMat = new ItemButcherMat("item_butcher_mat");
 	public static ItemCorpse itemCorpse = new ItemCorpse("item_corpse");
 	
-	//reame the mango paste to mango dust, keep it as paste in the localization
-	public static ItemMangoSeed mangoSeed = new ItemMangoSeed();
-	public static ItemMango mango = new ItemMango();
-	public static ItemBase mangoPaste = new ItemBase("mango_paste");
-	
-	public static ItemLunarSeed lunarSeed = new ItemLunarSeed();
+	public static ItemLunarSeed lunarSeed = new ItemLunarSeed("lunar_seed");
 	public static ItemTranquilizerFood itemTranquilizer = new ItemTranquilizerFood("tranquilizer");
 	public static ItemThrowableDust lunarDust = new ItemThrowableDust("lunar_lilly_dust");
 	
-	public static BodyPartBone bodyPartBone = new BodyPartBone("body_part_bone");
-	public static BodyPartBrain bodyPartBrain = new BodyPartBrain("body_part_brain");
-	public static BodyPartEye bodyPartEye = new BodyPartEye("body_part_eye");
-	public static BodyPartFlesh bodyPartFlesh = new BodyPartFlesh("body_part_flesh");
-	public static BodyPartFoot bodyPartFoot = new BodyPartFoot("body_part_foot");
-	public static BodyPartGland bodyPartGland = new BodyPartGland("body_part_gland");
-	public static BodyPartMisc bodyPartMisc = new BodyPartMisc("body_part_misc");
+	//reame the mango paste to mango dust, keep it as paste in the localization
+	public static ItemMangoSeed mangoSeed = new ItemMangoSeed();	//remove for release
+	public static ItemMango mango = new ItemMango();	//remove for release
+	public static ItemBase mangoPaste = new ItemBase("mango_paste");	//remove for release
+	
+	
+	public static BodyPartBone bodyPartBone = new BodyPartBone("body_part_bone");	//remove for release
+	public static BodyPartBrain bodyPartBrain = new BodyPartBrain("body_part_brain");	//remove for release (change slimey core to its own item)
+	public static BodyPartEye bodyPartEye = new BodyPartEye("body_part_eye");	//remove for release
+	public static BodyPartFlesh bodyPartFlesh = new BodyPartFlesh("body_part_flesh");	//remove for release
+	public static BodyPartFoot bodyPartFoot = new BodyPartFoot("body_part_foot");	//remove for release
+	public static BodyPartGland bodyPartGland = new BodyPartGland("body_part_gland");	//remove for release
+	public static BodyPartMisc bodyPartMisc = new BodyPartMisc("body_part_misc");	//remove for release
 	
 	//public static ItemBodyPartSpawn itemBodyPartSpawn = new ItemBodyPartSpawn("item_body_part_spawn");
 	

@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import java.util.Random;
 
 import net.mackdoodler.primal.PrimalMod;
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 
 public class BlockCropMango extends BlockCrops{
 	
@@ -19,11 +19,11 @@ public class BlockCropMango extends BlockCrops{
 	
 	@Override
 	protected Item getSeed() {
-		return PrimalItems.mangoSeed;
+		return ButcheryItems.mangoSeed;
 	}
 	
 	@Override
 	protected Item getCrop() {
-		return PrimalItems.mango;
+		return ButcheryItems.mango;
 	}
 }

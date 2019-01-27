@@ -5,8 +5,8 @@ import net.mackdoodler.primal.capabilities.MonsterAI;
 import net.mackdoodler.primal.capabilities.MonsterAIStorage;
 import net.mackdoodler.primal.entity.PrimalEntities;
 import net.mackdoodler.primal.handlers.CorpseHandler;
-import net.mackdoodler.primal.handlers.MobHandler;
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.handlers.MobButcheryDropsList;
+import net.mackdoodler.primal.items.ButcheryItems;
 import net.mackdoodler.primal.potions.PrimalPotions;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTBase;
@@ -37,7 +37,7 @@ public class CommonProxy {
 
 	public void init(FMLInitializationEvent e) {
 		// TODO Auto-generated method stub
-		MobHandler.makeButcheryList();
+		MobButcheryDropsList.makeButcheryList();
 		CorpseHandler.makeTranqResistances();
 	}
 

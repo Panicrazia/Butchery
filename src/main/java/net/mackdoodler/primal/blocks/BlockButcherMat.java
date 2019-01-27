@@ -2,7 +2,7 @@ package net.mackdoodler.primal.blocks;
 
 import java.util.Random;
 
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.EnumPushReaction;
@@ -93,7 +93,7 @@ public class BlockButcherMat extends BlockBase{
     {
 		//if its the center block then drop the item, otherwise no
 		if(state.getValue(CENTER).booleanValue() && !state.getValue(STICK).booleanValue() && !state.getValue(EDGE).booleanValue()){
-	        return PrimalItems.itemButcherMat;
+	        return ButcheryItems.itemButcherMat;
 		}
 		return Items.AIR;
     }

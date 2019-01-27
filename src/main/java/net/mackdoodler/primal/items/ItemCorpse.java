@@ -9,8 +9,8 @@ import net.mackdoodler.primal.PrimalMod;
 import net.mackdoodler.primal.blocks.BlockButcherMat;
 import net.mackdoodler.primal.blocks.ModBlocks;
 import net.mackdoodler.primal.handlers.CorpseHandler;
-import net.mackdoodler.primal.handlers.MobHandler;
-import net.mackdoodler.primal.handlers.MobHandler.ButcherEntry;
+import net.mackdoodler.primal.handlers.MobButcheryDropsList;
+import net.mackdoodler.primal.handlers.MobButcheryDropsList.ButcherEntry;
 import net.mackdoodler.primal.tileentity.TileEntityCorpse;
 import net.mackdoodler.primal.tileentity.TileEntityRuneSocket;
 import net.minecraft.block.Block;
@@ -177,7 +177,7 @@ public class ItemCorpse extends ItemBase{
                     {
                 		tileEntity.setEntiyIdentity(itemstack.getTagCompound().getString("corpseType"));
                     }
-                	tileEntity.fillInventory(((ButcherEntry)(MobHandler.allButcherEntries.get(itemstack.getTagCompound().getString("corpseType")))).getItemstackSet());
+                	tileEntity.fillInventory(((ButcherEntry)(MobButcheryDropsList.allButcherEntries.get(itemstack.getTagCompound().getString("corpseType")))).getItemstackSet());
                 }
             	
             	/* Still dont know what this shit does

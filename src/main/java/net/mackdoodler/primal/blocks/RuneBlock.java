@@ -2,7 +2,7 @@ package net.mackdoodler.primal.blocks;
 
 import net.mackdoodler.primal.PrimalMod;
 import net.mackdoodler.primal.items.ItemRune;
-import net.mackdoodler.primal.items.PrimalItems;
+import net.mackdoodler.primal.items.ButcheryItems;
 import net.mackdoodler.primal.items.PrimalCodex;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -122,7 +122,7 @@ public class RuneBlock extends BlockBase{
 			if(blockMeta!=0){
 				worldIn.setBlockState(pos, this.getStateFromMeta(0));
 				if(!worldIn.isRemote){
-					worldIn.spawnEntity(new EntityItem(worldIn, pos.getX()+.5, pos.getY()+1, pos.getZ()+.5,new ItemStack(PrimalItems.itemRune, 1, blockMeta)));
+					worldIn.spawnEntity(new EntityItem(worldIn, pos.getX()+.5, pos.getY()+1, pos.getZ()+.5,new ItemStack(ButcheryItems.itemRune, 1, blockMeta)));
 				}
 				
 			}
