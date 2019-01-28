@@ -51,11 +51,9 @@ public class ModBlocks {
 				blockCorpse,
 				rottenFleshBlock,
 				rottenFleshBlockFace
-				
-				
 		);
 		GameRegistry.registerTileEntity(TileEntityRuneSocket.class, "rune_socket");
-		GameRegistry.registerTileEntity(TileEntityCorpse.class, "corpse");
+		GameRegistry.registerTileEntity(blockCorpse.getTileEntityClass(), "corpse");
 	}
 	
 	public static void registerItemBlocks(IForgeRegistry<Item> registry){

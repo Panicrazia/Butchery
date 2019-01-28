@@ -67,36 +67,7 @@ public class ItemCorpse extends ItemBase{
 		}
 		return "item.corpse";
     }
-
-    /*
-    // This is a fun method which allows us to run some code when our item is
-    // shown in a creative tab. I am going to use it to add all the brain 
-    // types.
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs tab, List itemList) 
-    {
-        // This creates a loop with a counter. It will go through once for
-        // every listing in brainTypes,  and gives us a number associated 
-        // with each listing.
-        for (int pos = 0; pos < CorpseHelper.brainTypes.length; pos++) 
-        {
-            // This creates a new ItemStack instance. The item parameter 
-            // supplied is this item.
-            ItemStack brainStack = new ItemStack(item);
-            // By default, a new ItemStack does not have any nbt compound data. 
-            // We need to give it some.
-            brainStack.setTagCompound(new NBTTagCompound());
-            // Now we set the type of the item, brainType is the key, and 
-            // brainTypes[pos] is grabbing a
-            // entry from the brainTypes array.
-            brainStack.getTagCompound().setString("brainType", 
-            		CorpseHelper.brainTypes[pos]);
-            // And this adds it to the itemList, which is a list of all items
-            // in the creative tab.
-            itemList.add(brainStack);
-        }
-    }*/
-
+    
     @SideOnly(Side.CLIENT)
     @Override
     public String getItemStackDisplayName(ItemStack stack)
@@ -112,24 +83,6 @@ public class ItemCorpse extends ItemBase{
     	return super.getItemStackDisplayName(stack);
     }
     
-    /*
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-    	if ( stack.hasTagCompound() && stack.getTagCompound().hasKey("corpseType"))
-		{
-    		String type = stack.getTagCompound().getString("corpseType");
-    		type = (Character.toUpperCase(type.charAt(type.indexOf(':')+1))+type.substring(type.indexOf(':')+2)).replace('_', ' ');
-    		//type.index
-			tooltip.add(I18n.format("tooltip.corpsedesc", type));
-		}
-		else
-		{
-			tooltip.add("Random Corpse");
-		}
-    }*/
-    
 	@Override
 	/**
      * Called when a Block is right-clicked with this Item
@@ -137,66 +90,52 @@ public class ItemCorpse extends ItemBase{
      */
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        if (worldIn.isRemote)
-        {
-            //return EnumActionResult.SUCCESS;
-        }
+        IBlockState iblockstate = worldIn.getBlockState(pos);
         
-        if (!worldIn.getBlockState(pos).isSideSolid(worldIn, pos, EnumFacing.UP))
+        if (!iblockstate.isSideSolid(worldIn, pos, EnumFacing.UP))
         {
             return EnumActionResult.FAIL;
         }
+        
+        Block block = iblockstate.getBlock();
+
+        if (!block.isReplaceable(worldIn, pos))
+        {
+            pos = pos.up();
+            if(!block.isReplaceable(worldIn, pos)){
+            	return EnumActionResult.FAIL;
+            }
+        }
+
+        ItemStack itemstack = player.getHeldItem(hand);
+        
+        if (player.canPlayerEdit(pos, facing, itemstack))
+        {
+        	worldIn.playSound((EntityPlayer)null, pos, SoundType.SLIME.getPlaceSound(), SoundCategory.BLOCKS, 1f, 0.8f);
+        	
+        	Random randy = new Random();
+        	worldIn.setBlockState(pos, ModBlocks.blockCorpse.getStateFromMeta(randy.nextInt(8)), 10);
+        	
+        	if (worldIn.getTileEntity(pos) instanceof TileEntityCorpse)
+            {
+        		TileEntityCorpse tileEntity = (TileEntityCorpse) worldIn.getTileEntity(pos);
+        		if (worldIn.isRemote)
+                {
+            		tileEntity.setEntiyIdentity(itemstack.getTagCompound().getString("corpseType"));
+            		return EnumActionResult.SUCCESS;
+                }
+        		
+        		if(MobButcheryDropsList.butcherEntries.containsKey(itemstack.getTagCompound().getString("corpseType"))){
+        			tileEntity.fillInventory(((ButcherEntry)(MobButcheryDropsList.butcherEntries.get(itemstack.getTagCompound().getString("corpseType")))).getItemStackSet());
+                }
+        	}
+        	
+        	itemstack.shrink(1);
+        	return EnumActionResult.SUCCESS;
+        }
         else
         {
-            IBlockState iblockstate = worldIn.getBlockState(pos);
-            Block block = iblockstate.getBlock();
-
-            if (!block.isReplaceable(worldIn, pos))
-            {
-                pos = pos.up();
-                if(!worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos)){
-                	return EnumActionResult.FAIL;
-                }
-            }
-
-            ItemStack itemstack = player.getHeldItem(hand);
-            
-            //System.out.println("The corpse type is "+itemstack.getTagCompound().getString("corpseType"));
-            
-            if (player.canPlayerEdit(pos, facing, itemstack))
-            {
-            	SoundType soundtype = iblockstate.getBlock().getSoundType(iblockstate, worldIn, pos, player);
-            	worldIn.playSound((EntityPlayer)null, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-            	
-            	Random randy = new Random();
-            	worldIn.setBlockState(pos, ModBlocks.blockCorpse.getStateFromMeta(randy.nextInt(8)), 10);
-            	if (worldIn.getTileEntity(pos) instanceof TileEntityCorpse)
-                {
-            		TileEntityCorpse tileEntity = (TileEntityCorpse) worldIn.getTileEntity(pos);
-            		if (worldIn.isRemote)
-                    {
-                		tileEntity.setEntiyIdentity(itemstack.getTagCompound().getString("corpseType"));
-                    }
-                	tileEntity.fillInventory(((ButcherEntry)(MobButcheryDropsList.allButcherEntries.get(itemstack.getTagCompound().getString("corpseType")))).getItemstackSet());
-                }
-            	
-            	/* Still dont know what this shit does
-                worldIn.notifyNeighborsRespectDebug(pos, block, false);
-                worldIn.notifyNeighborsRespectDebug(blockpos, iblockstate1.getBlock(), false);
-
-                    if (player instanceof EntityPlayerMP)
-                    {
-                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP)player, pos, itemstack);
-                    }
-                */
-            	
-            	itemstack.shrink(1);
-            	return EnumActionResult.SUCCESS;
-            }
-            else
-            {
-                return EnumActionResult.FAIL;
-            }
+            return EnumActionResult.FAIL;
         }
     }
     

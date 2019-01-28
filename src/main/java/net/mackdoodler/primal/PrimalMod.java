@@ -34,6 +34,16 @@ public class PrimalMod {
 	 * redo rune sockets to not suck via capabilities
 	 */
 	
+	/*
+	 * meathook that can function as a grappling hook when you fire it and hits <something>, a pudge hook when it hits an enemy, 
+	 * 			and places a meathook hanging block when shift clicking
+	 * 
+	 * meathook hanging blocks have a meathook hanging entity dangling attatched by a chain(think lead/dragon crystals), the meathook hanger can be powered/unpowered (or maybe use some winch block or something i dunno) to raise and lower the entity that is connected to it
+	 * 
+	 * ALSO minecraft.entity.MultiPartEntity EXISTS LOOK AT THE (it says dragon in the class so im assuming dragon) DRAGON CODE TO SEE HOW ITS IMPLIMENTED
+	 * ^NOPE DRAGON CODE IS BASICALLY FUCKING WORTHLESS, THANKS MOJANG THERES NOT EVEN A LANDING ANIMATION WTF
+	 */
+	
 	/* 
 	 * butchery mod TODO:
 	 * 
@@ -46,7 +56,6 @@ public class PrimalMod {
 	 * 
 	 * clean up and disconnect from all this primal bullshit for release
 	 */
-	
 	
 	/*
 	 * necromancy mod TODO:
@@ -63,8 +72,8 @@ public class PrimalMod {
 	 * X glands (poison, gunpowder, silk, etc)(you can open them by right clicking to get a decent amount or use them in creations)
 	 * X skin (flesh)
 	 * X guts
-	 * 
 	 */
+	
 	public static final String modId = "primal";
 	public static final String name = "Primal";
 	public static final String version = "1.0.0";

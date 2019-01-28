@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -13,9 +14,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BodyPartMisc extends ItemBase implements IBodyPart {
 
 	/*
-	 * for parts that just simply dont belong in the other categories, maybe merge this with some of the others that arent as populated
+	 * how to give itemstacks the nbts for these babies
 	 * 
-	 * default is guts
+	 * stack.setTagCompound(new NBTTagCompound());
+	 * stack.getTagCompound().setString("partType", [identifying string]);
 	 */
 	
 	public BodyPartMisc(String name) {

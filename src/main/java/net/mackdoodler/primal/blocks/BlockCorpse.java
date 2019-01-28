@@ -35,7 +35,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCorpse extends BlockBase implements ITileEntityProvider{
+public class BlockCorpse extends BlockTileEntity<TileEntityCorpse>{
 
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public static final PropertyBool ORIENTATION = PropertyBool.create("orient");
@@ -60,7 +60,6 @@ public class BlockCorpse extends BlockBase implements ITileEntityProvider{
     public EnumBlockRenderType getRenderType(IBlockState state)
     {
         return EnumBlockRenderType.INVISIBLE;
-        //return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 	
 	@Override
@@ -111,9 +110,7 @@ public class BlockCorpse extends BlockBase implements ITileEntityProvider{
 	
 	@Override 
 	public ArrayList<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState blockstate, int fortune){
-		ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
-		
-		return drops;
+		return new ArrayList<ItemStack>();
 	}
 	
 	@Override
@@ -147,14 +144,10 @@ public class BlockCorpse extends BlockBase implements ITileEntityProvider{
     public void breakBlock(World world, BlockPos pos, IBlockState state)
     {
         world.removeTileEntity(pos);
-        //maybe spawn a bone item here, just as a parting gift?
         super.breakBlock(world, pos, state);
     }
     
     public void carveItUp(World worldIn, BlockPos pos){
-    	//System.out.println("carved baby");
-    	
-    	//maybe small chance to fire nova and light everything up when carving a blaze, or a sizzle sound when it has a creeper, neato tiny things like that
     	
         TileEntityCorpse tileEntity = (TileEntityCorpse) worldIn.getTileEntity(pos);
         if(tileEntity.getUnharmed()){
@@ -162,20 +155,15 @@ public class BlockCorpse extends BlockBase implements ITileEntityProvider{
             worldIn.playSound(null, pos, SoundEvents.BLOCK_SLIME_HIT, SoundCategory.BLOCKS, 1f, 1f);
             worldIn.playSound(null, pos, SoundEvents.ENTITY_PLAYER_ATTACK_CRIT, SoundCategory.BLOCKS, .5f, 1f);
             for(int i = 0; i<=40; i++){
-            	
-            	//particleManager.addDestructionParticle(pos, stateParticle, world, x, y, z, d0 - 0.5, d1 - 0.5, d2 - 0.5);
             	worldIn.spawnParticle(EnumParticleTypes.BLOCK_CRACK, pos.getX()+worldIn.rand.nextFloat(), pos.getY()+worldIn.rand.nextFloat()/2, pos.getZ()+worldIn.rand.nextFloat(), worldIn.rand.nextGaussian()*1D, worldIn.rand.nextGaussian()*1D, worldIn.rand.nextGaussian()*1D, 214);
             }
             tileEntity.harm();
         }
-
         for(int i = 0; i<=5; i++){
-        	
-        	//particleManager.addDestructionParticle(pos, stateParticle, world, x, y, z, d0 - 0.5, d1 - 0.5, d2 - 0.5);
         	worldIn.spawnParticle(EnumParticleTypes.BLOCK_CRACK, pos.getX()+worldIn.rand.nextFloat(), pos.getY()+worldIn.rand.nextFloat()/2, pos.getZ()+worldIn.rand.nextFloat(), worldIn.rand.nextGaussian()*1D, worldIn.rand.nextGaussian()*1D, worldIn.rand.nextGaussian()*1D, 214);
         }
+        
         worldIn.playSound(null, pos, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.BLOCKS, .5f, 1f);
-        //worldIn.playSound(null, pos, SoundEvents.ENTITY_SLIME_ATTACK, SoundCategory.BLOCKS, .5f, 1f);
         worldIn.playSound(null, pos, PrimalSoundEvents.MACHETE_CHOP, SoundCategory.BLOCKS, .5f, 1f);
         
         if(worldIn.isRemote){
@@ -200,13 +188,16 @@ public class BlockCorpse extends BlockBase implements ITileEntityProvider{
     }
     
     private ItemStack getRandomDrop(World worldIn, BlockPos pos){
-    	
-    	
     	return ItemStack.EMPTY;
     }
 
 	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
+	public Class<TileEntityCorpse> getTileEntityClass() {
+		return TileEntityCorpse.class;
+	}
+
+	@Override
+	public TileEntityCorpse createTileEntity(World world, IBlockState state) {
 		return new TileEntityCorpse();
 	}
 }

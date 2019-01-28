@@ -21,7 +21,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityCorpse extends TileEntity{
 
-	private final ItemStackHandler inventory = new ItemStackHandler(27); //this number is arbitrary, and im assuming that no butchery lists will be over 27 itemstacks, but the Trojans didnt expect their fancy new horse to be filled with Greek scum, now did they?
+	private ItemStackHandler inventory = new ItemStackHandler(27); //this number is arbitrary, and im assuming that no butchery lists will be over 27 itemstacks, but the Trojans didnt expect their fancy new horse to be filled with Greek scum, now did they?
 	private String entityIdentity;
 	private boolean unharmed;
 	private boolean inventoryCreated = false;
@@ -39,22 +39,6 @@ public class TileEntityCorpse extends TileEntity{
 		return entityIdentity;
 	}
 	
-	/*
-	public boolean getRenderEligibility(){
-		boolean eligible = false;
-		//System.out.println(this.getEntiyIdentity());
-		switch(this.getEntiyIdentity()){
-		case "minecraft:cow":
-		case "minecraft:pig":
-			
-			eligible = true;
-			break;
-			
-		}
-		
-		return eligible;
-	}*/
-	
 	public boolean getUnharmed(){
 		return unharmed;
 	}
@@ -63,19 +47,18 @@ public class TileEntityCorpse extends TileEntity{
 		unharmed = false;
 	}
 	
-	/*
-	 * fills the corpse inventory
-	 */
 	public boolean fillInventory(List<ItemStack> list){
+		
 		if(!inventoryCreated){
 			//inventory = new ItemStackHandler(list.size()); <- fucks up nbt storage when leaving and reentering a world, guess it has to be hardcoded if using a noncustom inventory :/
 			for(int i=0;i<(list.size()<27?list.size():27);i++){
-				
-				//System.out.println(list.get(i).getCount());
+				System.out.println(list.get(i).getCount());
 				inventory.setStackInSlot(i, list.get(i));
 			}
+			inventoryCreated = true;
 			return true;
 		}
+		
 		return false;
 	}
 	
@@ -83,7 +66,6 @@ public class TileEntityCorpse extends TileEntity{
 	 * retrieves a random item from the corpse and returns it
 	 */
 	public ItemStack getRandomItem() {
-		//System.out.println(inventory.getSlots());
 		int slot = (int)(Math.random()*inventory.getSlots());
 		int counter = 0;
 
@@ -97,6 +79,10 @@ public class TileEntityCorpse extends TileEntity{
 		return inventory.extractItem(slot, 1, false);
 	}
 	
+	
+	
+	
+	
 	@Override
 	public boolean hasCapability(@Nonnull Capability<?> cap, @Nonnull EnumFacing side)
 	{
@@ -107,27 +93,22 @@ public class TileEntityCorpse extends TileEntity{
 	@Override
 	public <T> T getCapability(@Nonnull Capability<T> cap, @Nonnull EnumFacing side)
 	{
-		if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-		{
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory);
-		}
-		return super.getCapability(cap, side);
+		return cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T)inventory : super.getCapability(cap, side);
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound nbt)
+	public void readFromNBT(NBTTagCompound compound)
 	{
-		super.readFromNBT(nbt);
-		inventory.deserializeNBT(nbt);
+		inventory.deserializeNBT(compound.getCompoundTag("inventory"));
+		super.readFromNBT(compound);
 	}
 	
 	@Nonnull
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound nbt)
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
 	{
-		nbt = super.writeToNBT(nbt);
-		nbt.merge(inventory.serializeNBT());
-		return nbt;
+		compound.setTag("inventory", inventory.serializeNBT());
+		return super.writeToNBT(compound);
 	}
 	
 	@Override
@@ -135,33 +116,4 @@ public class TileEntityCorpse extends TileEntity{
 	{
 	    return (oldState.getBlock() != newSate.getBlock());
 	}
-	
-	/*
-	 * these last three methods arnt needed I thiiiink since the client shouldnt need to know anything, but if anything ever breaks ill reenable them I guess
-	@Override
-    public NBTTagCompound getUpdateTag() {
-        // getUpdateTag() is called whenever the chunkdata is sent to the
-        // client. In contrast getUpdatePacket() is called when the tile entity
-        // itself wants to sync to the client. In many cases you want to send
-        // over the same information in getUpdateTag() as in getUpdatePacket().
-        return writeToNBT(new NBTTagCompound());
-    }
-
-    @Nullable
-    @Override
-    public SPacketUpdateTileEntity getUpdatePacket() {
-        // Prepare a packet for syncing our TE to the client. Since we only have to sync the stack
-        // and that's all we have we just write our entire NBT here. If you have a complex
-        // tile entity that doesn't need to have all information on the client you can write
-        // a more optimal NBT here.
-        NBTTagCompound nbtTag = new NBTTagCompound();
-        this.writeToNBT(nbtTag);
-        return new SPacketUpdateTileEntity(getPos(), 1, nbtTag);
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
-        // Here we get the packet from the server and read it into our client side tile entity
-        this.readFromNBT(packet.getNbtCompound());
-    }*/
 }

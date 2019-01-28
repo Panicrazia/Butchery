@@ -233,6 +233,10 @@ public class TileEntityCorpseRenderer extends TileEntitySpecialRenderer<TileEnti
 			}
 			
 			break;
+
+		//bosses which need custom models
+		case "minecraft:wither":
+		case "minecraft:ender_dragon":
 			
 		//shit just doesnt work
 		case "minecraft:horse":
@@ -243,10 +247,6 @@ public class TileEntityCorpseRenderer extends TileEntitySpecialRenderer<TileEnti
 		case "minecraft:mule":
 		case "minecraft:llama":
 
-		//bosses which need custom models
-		case "minecraft:wither":
-		case "minecraft:ender_dragon":
-			
 		default:
 			renderPileOfMeat(corpse, x - 0.5, y, z - 0.5);
 			break;
