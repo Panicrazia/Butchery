@@ -68,10 +68,7 @@ public class TileEntityCorpse extends TileEntity{
 				tools.add(list.get(i).getTool());
 				stacks.add(list.get(i).getRandItemStack());
 				totalItems += stacks.get(i).getCount();
-				//System.out.println(stacks.get(i).getCount());
 			}
-			
-			//System.out.println("Total Items: "+totalItems);
 			
 			inventory = new ButcheryItemStackHandler();
 			

@@ -113,7 +113,6 @@ public class MobButcheryDropsList {
 		
 		private int getMinMaxValue(){
 			int numero = (int)(Math.random()*(maximum-minimum+1))+minimum;
-			System.out.println(numero);
 			return (numero>0) ? numero : 0;
 		}
 		
@@ -132,6 +131,8 @@ public class MobButcheryDropsList {
 	}
 	
 	public static void makeButcheryList(){
+		ItemStack tempStack;
+		NBTTagCompound tempTag;
 		/* 'Passive' mobs */
 		//vanilla
 		addButcherDrops("minecraft:bat",
@@ -241,9 +242,13 @@ public class MobButcheryDropsList {
 		//vanilla
 		addButcherDrops("minecraft:cave_spider",
 			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.STRING), 2, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPIDER_EYE), 2, 5),
-			//TODO: poison potion
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.POTIONITEM), 1, 2));
+			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPIDER_EYE), 2, 5));
+		tempTag = new NBTTagCompound();
+		tempTag.setString("Potion", "strong_poison");
+		tempStack = new ItemStack(Items.POTIONITEM);
+		tempStack.setTagCompound(tempTag);
+		addEntry("minecraft:cave_spider", new ItemStack(ButcheryItems.butcherCleaver), tempStack, 1, 2);
+		
 		
 		//vanilla
 		addButcherDrops("minecraft:enderman",

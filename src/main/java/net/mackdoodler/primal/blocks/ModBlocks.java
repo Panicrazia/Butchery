@@ -8,6 +8,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -52,8 +53,8 @@ public class ModBlocks {
 				rottenFleshBlock,
 				rottenFleshBlockFace
 		);
-		GameRegistry.registerTileEntity(TileEntityRuneSocket.class, "rune_socket");
-		GameRegistry.registerTileEntity(blockCorpse.getTileEntityClass(), "corpse");
+		GameRegistry.registerTileEntity(TileEntityRuneSocket.class, new ResourceLocation("rune_socket"));
+		GameRegistry.registerTileEntity(blockCorpse.getTileEntityClass(), new ResourceLocation("corpse"));
 	}
 	
 	public static void registerItemBlocks(IForgeRegistry<Item> registry){
