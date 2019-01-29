@@ -18,6 +18,7 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -147,7 +148,7 @@ public class BlockCorpse extends BlockTileEntity<TileEntityCorpse>{
         super.breakBlock(world, pos, state);
     }
     
-    public void carveItUp(World worldIn, BlockPos pos){
+    public void carveItUp(EntityPlayer player, World worldIn, BlockPos pos){
     	
         TileEntityCorpse tileEntity = (TileEntityCorpse) worldIn.getTileEntity(pos);
         if(tileEntity.getUnharmed()){
@@ -170,7 +171,7 @@ public class BlockCorpse extends BlockTileEntity<TileEntityCorpse>{
     		return;
     	}
         
-        ItemStack stak = tileEntity.getRandomItem();
+        ItemStack stak = tileEntity.getRandomItem(player);
         
         if(stak.isEmpty()){
         	

@@ -1,18 +1,25 @@
 package net.mackdoodler.primal.tileentity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import net.mackdoodler.primal.handlers.ButcheryItemStackHandler;
 import net.mackdoodler.primal.handlers.MobButcheryDropsList.ButcherEntry;
+import net.mackdoodler.primal.handlers.MobButcheryDropsList.IndividualButcherEntry;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -21,14 +28,15 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityCorpse extends TileEntity{
 
-	private ItemStackHandler inventory = new ItemStackHandler(27); //this number is arbitrary, and im assuming that no butchery lists will be over 27 itemstacks, but the Trojans didnt expect their fancy new horse to be filled with Greek scum, now did they?
+	private ButcheryItemStackHandler inventory;
 	private String entityIdentity;
 	private boolean unharmed;
-	private boolean inventoryCreated = false;
+	private boolean inventoryCreated;
 	
 	public TileEntityCorpse(){
 		super();
 		unharmed = true;
+		inventoryCreated = false;
 	}
 	
 	public void setEntiyIdentity(String entityIdentity){
@@ -47,58 +55,65 @@ public class TileEntityCorpse extends TileEntity{
 		unharmed = false;
 	}
 	
-	public boolean fillInventory(List<ItemStack> list){
-		
+	public boolean fillInventory(List<IndividualButcherEntry> list)
+	{
 		if(!inventoryCreated){
-			//inventory = new ItemStackHandler(list.size()); <- fucks up nbt storage when leaving and reentering a world, guess it has to be hardcoded if using a noncustom inventory :/
-			for(int i=0;i<(list.size()<27?list.size():27);i++){
-				System.out.println(list.get(i).getCount());
-				inventory.setStackInSlot(i, list.get(i));
+			
+			List<ItemStack> tools = new ArrayList<ItemStack>();
+			List<ItemStack> stacks = new ArrayList<ItemStack>();
+			
+			int totalItems = 0;
+			
+			for(int i=0;i<list.size();i++){
+				tools.add(list.get(i).getTool());
+				stacks.add(list.get(i).getRandItemStack());
+				totalItems += stacks.get(i).getCount();
+				//System.out.println(stacks.get(i).getCount());
 			}
+			
+			//System.out.println("Total Items: "+totalItems);
+			
+			inventory = new ButcheryItemStackHandler();
+			
+			for(int i=0;i<stacks.size();i++){
+				for(int j=0;j<stacks.get(i).getCount();j++){
+					ItemStack stack = stacks.get(i).copy();
+					stack.setCount(1);
+					inventory.insertItem(tools.get(i).copy(), stack);
+				}
+			}
+			
 			inventoryCreated = true;
 			return true;
 		}
-		
 		return false;
 	}
 	
-	/*
-	 * retrieves a random item from the corpse and returns it
-	 */
-	public ItemStack getRandomItem() {
-		int slot = (int)(Math.random()*inventory.getSlots());
-		int counter = 0;
-
-		while(inventory.getStackInSlot(slot).isEmpty()&&counter<inventory.getSlots()){
-			slot++;
-			counter++;
-			if(slot>inventory.getSlots()-1){
-				slot=0;
-			}
+	public ItemStack getRandomItem(EntityPlayer player)
+	{
+		List<ItemStack> tools = inventory.getToolList();
+		ItemStack tool = player.getHeldItemMainhand();
+	    Map<Integer,Integer> locatinator= new HashMap<Integer,Integer>();
+	    
+    	int numberoUno = 0;
+    	for(int i=0; i < tools.size(); i++){
+    		if(tools.get(i).isItemEqual(tool)){
+    			locatinator.put(numberoUno, i);
+    			numberoUno++;
+    		}
+    	}
+    	
+		if(numberoUno > 0){
+			numberoUno = (int)(Math.random() * numberoUno);
+			return inventory.extractItem(locatinator.get(numberoUno));
 		}
-		return inventory.extractItem(slot, 1, false);
+        return ItemStack.EMPTY;
 	}
 	
-	
-	
-	
-	
-	@Override
-	public boolean hasCapability(@Nonnull Capability<?> cap, @Nonnull EnumFacing side)
-	{
-		return cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(cap, side);
-	}
-
-	@Nonnull
-	@Override
-	public <T> T getCapability(@Nonnull Capability<T> cap, @Nonnull EnumFacing side)
-	{
-		return cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T)inventory : super.getCapability(cap, side);
-	}
-
 	@Override
 	public void readFromNBT(NBTTagCompound compound)
 	{
+		inventory = new ButcheryItemStackHandler();
 		inventory.deserializeNBT(compound.getCompoundTag("inventory"));
 		super.readFromNBT(compound);
 	}

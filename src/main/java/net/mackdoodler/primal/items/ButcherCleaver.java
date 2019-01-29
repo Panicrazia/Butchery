@@ -47,7 +47,7 @@ public class ButcherCleaver extends ItemBase{
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
     	if(worldIn.getBlockState(pos).getBlock() == ModBlocks.blockCorpse){
-    		((BlockCorpse) worldIn.getBlockState(pos).getBlock()).carveItUp(worldIn,pos);
+    		((BlockCorpse) worldIn.getBlockState(pos).getBlock()).carveItUp(player,worldIn,pos);
     	}
     	
         return EnumActionResult.PASS;

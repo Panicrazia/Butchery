@@ -68,9 +68,11 @@ public class MobButcheryDropsList {
 			while(entries.remove(new IndividualButcherEntry(item, item, 1, 1))){}
 		}
 		
+		public List<IndividualButcherEntry> getEntries(){
+			return entries;
+		}
+		
 		/*
-		 * returns an ArrayList of ItemStacks that have all been generated from its internal entries
-		 */
 		public List<ItemStack> getItemStackSet(){
 			List<ItemStack> listicles = new ArrayList<ItemStack>();
 			
@@ -79,7 +81,7 @@ public class MobButcheryDropsList {
 			}
 			
 			return listicles;
-		}
+		}*/
 	}
 	
 	public static class IndividualButcherEntry{
@@ -95,7 +97,7 @@ public class MobButcheryDropsList {
 			this.maximum=max;
 		}
 		
-		public ItemStack getChopItem(){
+		public ItemStack getTool(){
 			return chopItem;
 		}
 		
@@ -110,13 +112,9 @@ public class MobButcheryDropsList {
 		}
 		
 		private int getMinMaxValue(){
-			//TODO: this method needs work, currently only works for min values that are positive
 			int numero = (int)(Math.random()*(maximum-minimum+1))+minimum;
-			//System.out.println(numero);
-			if(numero>0){
-				return numero;
-			}
-			return 0;
+			System.out.println(numero);
+			return (numero>0) ? numero : 0;
 		}
 		
 		@Override
