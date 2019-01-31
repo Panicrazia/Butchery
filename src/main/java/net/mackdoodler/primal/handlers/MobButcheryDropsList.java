@@ -71,17 +71,6 @@ public class MobButcheryDropsList {
 		public List<IndividualButcherEntry> getEntries(){
 			return entries;
 		}
-		
-		/*
-		public List<ItemStack> getItemStackSet(){
-			List<ItemStack> listicles = new ArrayList<ItemStack>();
-			
-			for(int i=0;i<entries.size();i++){
-				listicles.add(entries.get(i).getRandItemStack());
-			}
-			
-			return listicles;
-		}*/
 	}
 	
 	public static class IndividualButcherEntry{
@@ -135,114 +124,114 @@ public class MobButcheryDropsList {
 		NBTTagCompound tempTag;
 		/* 'Passive' mobs */
 		//vanilla
-		addButcherDrops("minecraft:bat",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1));
+		addButcherDrops("minecraft:bat");
+		addEntry("minecraft:bat",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1);
 		
 		//vanilla
-		addButcherDrops("minecraft:chicken",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FEATHER), 4, 10),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.CHICKEN), 1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EGG), -3, 1));
+		addButcherDrops("minecraft:chicken");
+		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FEATHER), 4, 10);
+		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.CHICKEN), 0, 2);
+		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EGG), 0, 2);
 		
 		//vanilla
-		addButcherDrops("minecraft:cow",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 10, 20));
+		addButcherDrops("minecraft:cow");
+		addEntry("minecraft:cow",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:cow",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 5, 8);
+		addEntry("minecraft:cow",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 10, 20);
 		
 		//vanilla
-		addButcherDrops("minecraft:donkey",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 3, 10),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6));
+		addButcherDrops("minecraft:donkey");
+		addEntry("minecraft:donkey",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:donkey",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 3, 10);
+		addEntry("minecraft:donkey",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6);
 		
 		//vanilla
-		addButcherDrops("minecraft:horse",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 3, 10),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6));
+		addButcherDrops("minecraft:horse");
+		addEntry("minecraft:horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 0, 2);
+		addEntry("minecraft:horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6);
 
 		//vanilla
-		addButcherDrops("minecraft:mooshroom",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.RED_MUSHROOM)), 0, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM)), 0, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 10, 20),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 0, 4));
+		addButcherDrops("minecraft:mooshroom");
+		addEntry("minecraft:mooshroom",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.RED_MUSHROOM)), 1, 4);
+		addEntry("minecraft:mooshroom",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.BROWN_MUSHROOM)), 1, 4);
+		addEntry("minecraft:mooshroom",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:mooshroom",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 5, 8);
+		addEntry("minecraft:mooshroom",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 10, 20);
 
 		//vanilla
-		addButcherDrops("minecraft:mule",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 3, 10),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6));
+		addButcherDrops("minecraft:mule");
+		addEntry("minecraft:mule",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:mule",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 3, 10);
+		addEntry("minecraft:mule",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6);
 
 		//vanilla
-		addButcherDrops("minecraft:ocelot",
-			//rabbit corpse?
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 0, 2));
+		addButcherDrops("minecraft:ocelot");
+		//rabbit corpse?
+		addEntry("minecraft:ocelot",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1);
+		addEntry("minecraft:ocelot",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 0, 2);
 
 		//vanilla
-		addButcherDrops("minecraft:parrot",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FEATHER), 4, 10),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.CHICKEN), 1, 1));
+		addButcherDrops("minecraft:parrot");
+		addEntry("minecraft:parrot",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1);
+		addEntry("minecraft:parrot",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FEATHER), 4, 10);
+		addEntry("minecraft:parrot",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.CHICKEN), 1, 1);
 
 		//vanilla
-		addButcherDrops("minecraft:pig",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PORKCHOP), 14, 28));
+		addButcherDrops("minecraft:pig");
+		addEntry("minecraft:pig",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:pig",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PORKCHOP), 14, 28);
 
 		//vanilla
-		addButcherDrops("minecraft:rabbit",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.RABBIT_HIDE), 2, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.RABBIT_FOOT), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.RABBIT), 1, 1));
+		addButcherDrops("minecraft:rabbit");
+		addEntry("minecraft:rabbit",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1);
+		addEntry("minecraft:rabbit",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.RABBIT_HIDE), 2, 4);
+		addEntry("minecraft:rabbit",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.RABBIT_FOOT), 0, 1);
+		addEntry("minecraft:rabbit",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.RABBIT), 1, 1);
 		
 		//vanilla
-		addButcherDrops("minecraft:sheep",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.WOOL), 1, 14), 1, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.MUTTON), 7, 15));
+		addButcherDrops("minecraft:sheep");
+		addEntry("minecraft:sheep",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.WOOL)), 0, 2);
+		addEntry("minecraft:sheep",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:sheep",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.MUTTON), 7, 15);
 		
 		//vanilla
-		addButcherDrops("minecraft:skeleton_horse",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 13, 26));
+		addButcherDrops("minecraft:skeleton_horse");
+		addEntry("minecraft:skeleton_horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 13, 26);
 		
 		//vanilla
-		addButcherDrops("minecraft:zombie_horse",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 13, 26),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 3));
+		addButcherDrops("minecraft:zombie_horse");
+		addEntry("minecraft:zombie_horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 13, 26);
+		addEntry("minecraft:zombie_horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 3);
 		
 		//vanilla
-		addButcherDrops("minecraft:squid",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.DYE), 3, 7));
+		addButcherDrops("minecraft:squid");
+		addEntry("minecraft:squid",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.DYE), 3, 7);
 		
 		//vanilla
-		addButcherDrops("minecraft:llama",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 3, 10),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6));
+		addButcherDrops("minecraft:llama");
+		addEntry("minecraft:llama",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:llama",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 3, 10);
+		addEntry("minecraft:llama",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6);
 		
 		//vanilla
-		addButcherDrops("minecraft:polar_bear",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 48, 64),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 0, 32),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FISH), 0, 2));
+		addButcherDrops("minecraft:polar_bear");
+		addEntry("minecraft:polar_bear",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:polar_bear",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 48, 64);
+		addEntry("minecraft:polar_bear",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 0, 32);
+		addEntry("minecraft:polar_bear",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FISH), 0, 2);
 		
 		//vanilla
-		addButcherDrops("minecraft:wolf",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 1, 2));
-			
+		addButcherDrops("minecraft:wolf");
+		addEntry("minecraft:wolf",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:wolf",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5);
+		addEntry("minecraft:wolf",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 1, 2);
+		
 		//vanilla
-		addButcherDrops("minecraft:cave_spider",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.STRING), 2, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPIDER_EYE), 2, 5));
+		addButcherDrops("minecraft:cave_spider");
+		addEntry("minecraft:cave_spider",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.STRING), 2, 4);
+		addEntry("minecraft:cave_spider",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPIDER_EYE), 2, 5);
 		tempTag = new NBTTagCompound();
 		tempTag.setString("Potion", "strong_poison");
 		tempStack = new ItemStack(Items.POTIONITEM);
@@ -251,197 +240,202 @@ public class MobButcheryDropsList {
 		
 		
 		//vanilla
-		addButcherDrops("minecraft:enderman",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ENDER_PEARL), 3, 6));
+		addButcherDrops("minecraft:enderman");
+		addEntry("minecraft:enderman",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ENDER_PEARL), 3, 6);
 		
 		//vanilla
-		addButcherDrops("minecraft:spider",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.STRING), 4, 9),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPIDER_EYE), 0, 2));
+		addButcherDrops("minecraft:spider");
+		addEntry("minecraft:spider",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.STRING), 4, 9);
+		addEntry("minecraft:spider",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPIDER_EYE), 0, 2);
 		
 		//vanilla
-		addButcherDrops("minecraft:zombie_pigman",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 5, 10),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PORKCHOP), 4, 8),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GOLD_NUGGET), 3, 6));
+		addButcherDrops("minecraft:zombie_pigman");
+		addEntry("minecraft:zombie_pigman",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1);
+		addEntry("minecraft:zombie_pigman",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 5, 10);
+		addEntry("minecraft:zombie_pigman",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PORKCHOP), 4, 8);
+		addEntry("minecraft:zombie_pigman",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GOLD_NUGGET), 3, 6);
 		
 		//vanilla
-		addButcherDrops("minecraft:blaze",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BLAZE_ROD), 3, 6),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FIRE_CHARGE), -1, 1));
+		addButcherDrops("minecraft:blaze");
+		addEntry("minecraft:blaze",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BLAZE_ROD), 3, 6);
+		addEntry("minecraft:blaze",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FIRE_CHARGE), -1, 1);
 		
 		//vanilla
-		addButcherDrops("minecraft:creeper",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 4), -2, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GUNPOWDER), 4, 9));
+		addButcherDrops("minecraft:creeper");
+		addEntry("minecraft:creeper",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:creeper",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 4), -2, 1);
+		addEntry("minecraft:creeper",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GUNPOWDER), 4, 9);
 
 		//vanilla
-		addButcherDrops("minecraft:guardian",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PRISMARINE_SHARD), 4, 8),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PRISMARINE_CRYSTALS), 3, 6),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FISH), 1, 1));
+		addButcherDrops("minecraft:guardian");
+		addEntry("minecraft:guardian",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1);
+		addEntry("minecraft:guardian",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PRISMARINE_SHARD), 4, 8);
+		addEntry("minecraft:guardian",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PRISMARINE_CRYSTALS), 3, 6);
+		addEntry("minecraft:guardian",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FISH), 1, 1);
 		
 		//vanilla
-		addButcherDrops("minecraft:elder_guardian",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PRISMARINE_SHARD), 6, 12),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PRISMARINE_CRYSTALS), 4, 8),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FISH), 1, 1));
-			
+		addButcherDrops("minecraft:elder_guardian");
+		addEntry("minecraft:elder_guardian",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1);
+		addEntry("minecraft:elder_guardian",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PRISMARINE_SHARD), 6, 12);
+		addEntry("minecraft:elder_guardian",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.PRISMARINE_CRYSTALS), 4, 8);
+		addEntry("minecraft:elder_guardian",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FISH), 1, 1);
+		
 		//vanilla
-		addButcherDrops("minecraft:endermite",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ENDER_PEARL), 1, 2));
+		addButcherDrops("minecraft:endermite");
+		addEntry("minecraft:endermite",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ENDER_PEARL), 1, 2);
 
 		//vanilla
-		addButcherDrops("minecraft:villager",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 2, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), -2, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EMERALD), -5, 1),
-			//see if I can make these custom books, such as: diaries, minecraft bibles, stupid shit like that
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BOOK), -6, 1));
+		addButcherDrops("minecraft:villager");
+		addEntry("minecraft:villager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 2, 4);
+		addEntry("minecraft:villager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), -2, 1);
+		addEntry("minecraft:villager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5);
+		addEntry("minecraft:villager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EMERALD), -5, 1);
+		//see if I can make these custom books, such as: diaries, minecraft bibles, stupid shit like that
+		addEntry("minecraft:villager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BOOK), -6, 1);
 		
 		//vanilla
-		addButcherDrops("minecraft:evocation_illager",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 2, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), -2, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.TOTEM_OF_UNDYING), 1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EMERALD), 5, 7),
-			//see if I can make these custom books, such as: diaries, minecraft bibles, stupid shit like that
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BOOK), -6, 1));
+		addButcherDrops("minecraft:evocation_illager");
+		addEntry("minecraft:evocation_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 2, 4);
+		addEntry("minecraft:evocation_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), -2, 1);
+		addEntry("minecraft:evocation_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5);
+		addEntry("minecraft:evocation_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.TOTEM_OF_UNDYING), 1, 1);
+		addEntry("minecraft:evocation_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EMERALD), 5, 7);
+		//see if I can make these custom books, such as: diaries, minecraft bibles, stupid shit like that
+		addEntry("minecraft:evocation_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BOOK), -6, 1);
 		
 		//vanilla
-		addButcherDrops("minecraft:vex",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_SWORD), -5, 1));
-			
-		//vanilla
-		addButcherDrops("minecraft:vindication_illager",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 2, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), -2, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EMERALD), 3, 5),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_AXE), 0, 1),
-			//see if I can make these custom books, such as: diaries, minecraft bibles, stupid shit like that
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BOOK), -6, 1));
+		addButcherDrops("minecraft:vex");
+		addEntry("minecraft:vex",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_SWORD), -5, 1);
 		
 		//vanilla
-		addButcherDrops("minecraft:witch",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(ButcheryItems.lunarDust), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), -2, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GLASS_BOTTLE), -1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GLOWSTONE_DUST), -2, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.REDSTONE), -2, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GUNPOWDER), -2, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPIDER_EYE), -2, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FERMENTED_SPIDER_EYE), -2, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SUGAR), -2, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BLAZE_POWDER), -2, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.MAGMA_CREAM), -2, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.NETHER_WART), -2, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPECKLED_MELON), -3, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GOLDEN_CARROT), -3, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.RABBIT_FOOT), -3, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.STICK), 1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.DRAGON_BREATH), -8, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EMERALD), -3, 1));
+		addButcherDrops("minecraft:vindication_illager");
+		addEntry("minecraft:vindication_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 2, 4);
+		addEntry("minecraft:vindication_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), -2, 1);
+		addEntry("minecraft:vindication_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5);
+		addEntry("minecraft:vindication_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EMERALD), 3, 5);
+		addEntry("minecraft:vindication_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_AXE), 0, 1);
+		//see if I can make these custom books, such as: diaries, minecraft bibles, stupid shit like that
+		addEntry("minecraft:vindication_illager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BOOK), -6, 1);
 		
 		//vanilla
-		addButcherDrops("minecraft:iron_golem",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.RED_FLOWER)), 1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.IRON_BLOCK)), -1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_INGOT), 7, 10),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_NUGGET), 5, 9));
-			
-		//vanilla
-		addButcherDrops("minecraft:ghast",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), -1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GHAST_TEAR), 4, 6),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GUNPOWDER), 3, 5));
-			
-		//vanilla
-		addButcherDrops("minecraft:husk",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.SAND)), 2, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 8, 19),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_NUGGET), 0, 2));
+		addButcherDrops("minecraft:witch");
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(ButcheryItems.lunarDust), 0, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), -2, 1);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 2, 5);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GLASS_BOTTLE), -1, 1);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GLOWSTONE_DUST), -2, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.REDSTONE), -2, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GUNPOWDER), -2, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPIDER_EYE), -2, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FERMENTED_SPIDER_EYE), -2, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SUGAR), -2, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BLAZE_POWDER), -2, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.MAGMA_CREAM), -2, 2);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.NETHER_WART), -2, 1);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SPECKLED_MELON), -3, 1);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GOLDEN_CARROT), -3, 1);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.RABBIT_FOOT), -3, 1);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.STICK), 1, 1);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.DRAGON_BREATH), -8, 1);
+		addEntry("minecraft:witch",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EMERALD), -3, 1);
 		
 		//vanilla
-		addButcherDrops("minecraft:zombie",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 2), -2, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 12, 24),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_NUGGET), 0, 2));
+		addButcherDrops("minecraft:iron_golem");
+		addEntry("minecraft:iron_golem",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.RED_FLOWER)), -1, 1);
+		addEntry("minecraft:iron_golem",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.IRON_BLOCK)), -1, 1);
+		addEntry("minecraft:iron_golem",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_INGOT), 7, 10);
+		addEntry("minecraft:iron_golem",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_NUGGET), 5, 9);
 		
 		//vanilla
-		addButcherDrops("minecraft:zombie_villager",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 2), -2, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 12, 24),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_NUGGET), 8, 16));
-			
-		//vanilla
-		addButcherDrops("minecraft:magma_cube",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.MAGMA_CREAM), 3, 5));
+		addButcherDrops("minecraft:ghast");
+		addEntry("minecraft:ghast",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), -1, 1);
+		addEntry("minecraft:ghast",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GHAST_TEAR), 4, 6);
+		addEntry("minecraft:ghast",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.GUNPOWDER), 3, 5);
 		
 		//vanilla
-		addButcherDrops("minecraft:shulker",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ENDER_PEARL), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SHULKER_SHELL), 1, 1));
+		addButcherDrops("minecraft:husk");
+		addEntry("minecraft:husk",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.SAND)), 2, 4);
+		addEntry("minecraft:husk",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:husk",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 8, 19);
+		addEntry("minecraft:husk",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_NUGGET), 0, 2);
 		
 		//vanilla
-		addButcherDrops("minecraft:silverfish",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver),new ItemStack(Items.DIAMOND), -8, 1));
+		addButcherDrops("minecraft:zombie");
+		addEntry("minecraft:zombie",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:zombie",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 2), -2, 1);
+		addEntry("minecraft:zombie",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 12, 24);
+		addEntry("minecraft:zombie",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_NUGGET), 0, 2);
 		
 		//vanilla
-		addButcherDrops("minecraft:skeleton",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 10, 20),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), 1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ARROW), 5, 7));
+		addButcherDrops("minecraft:zombie_villager");
+		addEntry("minecraft:zombie_villager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:zombie_villager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 2), -2, 1);
+		addEntry("minecraft:zombie_villager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ROTTEN_FLESH), 12, 24);
+		addEntry("minecraft:zombie_villager",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.IRON_NUGGET), 8, 16);
 		
 		//vanilla
-		addButcherDrops("minecraft:wither_skeleton",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 8, 14),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 1), 1, 1));
+		addButcherDrops("minecraft:magma_cube");
+		addEntry("minecraft:magma_cube",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.MAGMA_CREAM), 3, 5);
+		
+		//vanilla
+		addButcherDrops("minecraft:shulker");
+		addEntry("minecraft:shulker",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ENDER_PEARL), 0, 1);
+		addEntry("minecraft:shulker",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SHULKER_SHELL), 1, 1);
+		
+		//vanilla
+		addButcherDrops("minecraft:silverfish");
+		addEntry("minecraft:silverfish",new ItemStack(ButcheryItems.butcherCleaver),new ItemStack(Items.DIAMOND), -8, 1);
+		
+		//vanilla
+		addButcherDrops("minecraft:skeleton");
+		addEntry("minecraft:skeleton",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 10, 20);
+		addEntry("minecraft:skeleton",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), 1, 1);
+		addEntry("minecraft:skeleton",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ARROW), 5, 7);
+		
+		//vanilla
+		addButcherDrops("minecraft:wither_skeleton");
+		addEntry("minecraft:wither_skeleton",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 8, 14);
+		addEntry("minecraft:wither_skeleton",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 1), 1, 1);
 
 		//vanilla
-		addButcherDrops("minecraft:stray",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 10, 20),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), 1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ARROW), 5, 7));
+		addButcherDrops("minecraft:stray");
+		addEntry("minecraft:stray",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 10, 20);
+		addEntry("minecraft:stray",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 0), 1, 1);
+		addEntry("minecraft:stray",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ARROW), 5, 7);
 		
 		//vanilla
-		addButcherDrops("minecraft:slime",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SLIME_BALL), 5, 8));
+		addButcherDrops("minecraft:slime");
+		addEntry("minecraft:slime",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SLIME_BALL), 5, 8);
 		
 		//vanilla
-		addButcherDrops("minecraft:snow_golem",
-			//carved pumpkin instead of normal pumpkin | me, weeks later looking at my todos: all pumpkins are carved smh
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.PUMPKIN)), 2, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SNOWBALL), 8, 16));
+		addButcherDrops("minecraft:snow_golem");
+		//I spent an embarrassing amount of time trying to find out how to specifically get carved pumpkins, not realizing that all pumpkins are carved
+		addEntry("minecraft:snow_golem",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.PUMPKIN)), 2, 4);
+		addEntry("minecraft:snow_golem",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SNOWBALL), 8, 16);
 		
 		//vanilla
-		addButcherDrops("minecraft:wither",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.SOUL_SAND)), 0, 4),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 1), 0, 3),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.NETHER_STAR), 1, 3),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 5, 10));
+		addButcherDrops("minecraft:wither");
+		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.SOUL_SAND)), 0, 4);
+		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
+		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 1), 0, 3);
+		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.NETHER_STAR), 1, 3);
+		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 5, 10);
 		
 		//vanilla
-		addButcherDrops("minecraft:enderdragonboss",
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.DRAGON_EGG)), 1, 1),
-			//new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver),new ItemStack(Item.getItemFromBlock(Blocks.END_PORTAL_FRAME), 0, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 5), 1, 1),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 10, 20),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 20, 52),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ENDER_PEARL), 25, 50),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.DRAGON_BREATH), 10, 20),
-			new IndividualButcherEntry(new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 20, 40));
+		addButcherDrops("minecraft:enderdragonboss");
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.DRAGON_EGG)), 1, 1);
+		//addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver),new ItemStack(Item.getItemFromBlock(Blocks.END_PORTAL_FRAME)), 0, 1);
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 5), 1, 1);
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 10, 20);
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 20, 52);
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ENDER_PEARL), 25, 50);
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.DRAGON_BREATH), 10, 20);
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 20, 40);
 	}
 }
+/*
+new\s*IndividualButcherEntry\(new ItemStack\(ButcheryItems.butcherCleaver\)([^)]+\)[^)]+\))[^\r]+
+new\s*IndividualButcherEntry\(new ItemStack\(ButcheryItems.butcherCleaver\)([^)]+\)[^)]+\))[^\r]+
+addEntry\("minecraft:cave_spider",new ItemStack\(ButcheryItems.butcherCleaver\)$1;
+*/
