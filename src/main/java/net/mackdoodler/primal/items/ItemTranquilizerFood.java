@@ -68,7 +68,7 @@ public class ItemTranquilizerFood extends ItemFood {
 		case 1:
 			if(target instanceof EntityCow || target instanceof EntityZombie || target instanceof EntityChicken || target instanceof EntitySlime){
 				if(target.world.isRemote){
-					ClientProxy.spawnSleepParticles(target);
+					ClientProxy.spawnSleepParticlesForEntity(target);
 				}
 				stack.shrink(1);
 				return true;
