@@ -23,7 +23,7 @@ public class MobButcheryDropsList {
 	
 	public static Map<String, ButcherEntry> butcherEntries = new HashMap();
 	
-	public static void addEntry(String entityName, ItemStack output, ItemStack tool, int min, int max) {
+	public static void addEntry(String entityName, ItemStack tool, ItemStack output, int min, int max) {
 		if(!output.isEmpty() && !tool.isEmpty()){
 			ButcherEntry entry;
 			if(butcherEntries.containsKey(entityName)){
@@ -131,8 +131,8 @@ public class MobButcheryDropsList {
 		addButcherDrops("minecraft:chicken");
 		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
 		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FEATHER), 4, 10);
-		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.CHICKEN), 0, 2);
-		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EGG), 0, 2);
+		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.CHICKEN), 1, 1);
+		addEntry("minecraft:chicken",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EGG), -2, 1);
 		
 		//vanilla
 		addButcherDrops("minecraft:cow");
@@ -149,7 +149,7 @@ public class MobButcheryDropsList {
 		//vanilla
 		addButcherDrops("minecraft:horse");
 		addEntry("minecraft:horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
-		addEntry("minecraft:horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 0, 2);
+		addEntry("minecraft:horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 3, 8);
 		addEntry("minecraft:horse",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.LEATHER), 2, 6);
 
 		//vanilla

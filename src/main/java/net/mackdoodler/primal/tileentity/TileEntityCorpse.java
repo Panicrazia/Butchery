@@ -19,6 +19,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -90,6 +91,7 @@ public class TileEntityCorpse extends TileEntity{
 	{
 		List<ItemStack> tools = inventory.getToolList();
 		ItemStack tool = player.getHeldItemMainhand();
+		
 	    Map<Integer,Integer> locatinator= new HashMap<Integer,Integer>();
 	    
     	int numberoUno = 0;
