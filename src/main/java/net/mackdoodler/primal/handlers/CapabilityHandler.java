@@ -5,6 +5,7 @@ import net.mackdoodler.primal.capabilities.CapabilityMonsterAI;
 import net.mackdoodler.primal.capabilities.IMonsterAI;
 import net.mackdoodler.primal.items.ButcheryItems;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -26,7 +27,7 @@ public class CapabilityHandler {
 	}
 	
 	@SubscribeEvent
-	public void rewriteMonsterAI(EntityJoinWorldEvent event){
+	public void slimeLobotomization(EntityJoinWorldEvent event){
 		if(event.getEntity() instanceof EntityLivingBase){
 			
 			EntityLivingBase target = (EntityLivingBase) event.getEntity();
@@ -36,15 +37,7 @@ public class CapabilityHandler {
 				IMonsterAI mai = target.getCapability(CapabilityMonsterAI.MONSTER_AI_CAPABILITY, null);
 				
 				if(mai.getModified()){
-	
-					System.out.println("ENTITY DETECTED: PROCEEDING TO LOBOTOMISE");
-					
-					if(CorpseHandler.neuterEntity((EntityLiving)target)){
-						System.out.println("sucessful lobotomization");
-					}
-					else{
-						System.out.println("unsuccessful lobotomization");
-					}
+					CorpseHandler.neuterEntity((EntityLiving)target);
 				}
 			}
 		}

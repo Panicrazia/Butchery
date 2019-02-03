@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy{
 
-	private static final float SLEEP_PARTICLE_GENERATION_CONSTANT = .75f;
+	private static final float SLEEP_PARTICLE_GENERATION_CONSTANT = .5f;
 	
 	public static void spawnSleepParticlesForEntity(EntityLivingBase entity){
 		SleepParticles particle = new SleepParticles(Minecraft.getMinecraft().getTextureManager(), entity.getEntityWorld(), 

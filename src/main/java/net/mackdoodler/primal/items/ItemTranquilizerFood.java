@@ -12,6 +12,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityVillager;
@@ -61,12 +62,9 @@ public class ItemTranquilizerFood extends ItemFood {
     {
 		switch(stack.getItemDamage()){
 		case 0:
-			if(target instanceof EntityVillager || target instanceof EntityCow || target instanceof EntityChicken || target instanceof EntitySlime){
-				CorpseHandler.applyTranquilizer(target, 10);
-				stack.shrink(1);
-				return true;
-			}
-			break;
+			CorpseHandler.applyTranquilizer(target, 10);
+			stack.shrink(1);
+			return true;
 		case 1:
 			if(target instanceof EntityCow || target instanceof EntityZombie || target instanceof EntityChicken || target instanceof EntitySlime){
 				if(target.world.isRemote){

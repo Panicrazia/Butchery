@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.mackdoodler.primal.items.ItemCorpse;
+import net.mackdoodler.primal.capabilities.CapabilityMonsterAI;
+import net.mackdoodler.primal.capabilities.IMonsterAI;
 import net.mackdoodler.primal.items.ButcheryItems;
 import net.mackdoodler.primal.potions.PrimalPotions;
 import net.minecraft.entity.Entity;
@@ -37,48 +39,29 @@ public class CorpseHandler {
 	public static Map tranqResistances = new HashMap();
 	
 	/**
-	 * code for applying tranquilizer to an entity
+	 * applies 1 dosage to the passed in entity, if you want to apply more than one at a time then call 
+	 * {@link #applyTranquilizer(EntityLivingBase, int, int)}
 	 * @param target the entity getting tranquilized
-	 * @param tranquilizerStrengthCeiling the maximum level of tranquilizer this method call will make
+	 * @param tranquilizerCap the maximum level of tranquilizer this method call will make
 	 */
-	public static void applyTranquilizer(EntityLivingBase target, int tranquilizerStrengthCeiling){
-		applyTranquilizer(target, tranquilizerStrengthCeiling, 0);
+	public static void applyTranquilizer(EntityLivingBase target, int tranquilizerCap){
+		applyTranquilizer(target, tranquilizerCap, 1);
 	}
 	
 	/**
-	 * code for applying tranquilizer to an entity
+	 * applies a set dosage to the passed in entity
 	 * @param target the entity getting tranquilized
-	 * @param tranquilizerStrengthCeiling the maximum level of tranquilizer this method call will make
+	 * @param tranquilizerCap the maximum level of tranquilizer this method call will make
 	 * @param tranquilizerStrengthFloor how much tranquilizer to add with this call
 	 */
-	public static void applyTranquilizer(EntityLivingBase target, int tranquilizerStrengthCeiling, int tranquilizerStrengthFloor){
-		if(!target.world.isRemote){
-			PotionEffect effect = target.getActivePotionEffect(PrimalPotions.DROWSY_POTION);
-			//if the target is already affected by the some tranquilization effect
-			if (effect != null) {
-				if(effect.getAmplifier() + tranquilizerStrengthFloor >= tranquilizerStrengthCeiling){
-					tranquilizerStrengthFloor = tranquilizerStrengthCeiling - effect.getAmplifier() - 1;
-				}
-				boolean particles = effect.getAmplifier() + tranquilizerStrengthFloor + 1 >= getTranqKillThreshhold(target);
-				target.addPotionEffect(new PotionEffect(PrimalPotions.DROWSY_POTION, 300, target.removeActivePotionEffect(PrimalPotions.DROWSY_POTION).getAmplifier() + tranquilizerStrengthFloor + 1, false, particles));
-			}
-			else{
-				target.addPotionEffect(new PotionEffect(PrimalPotions.DROWSY_POTION, 300, tranquilizerStrengthFloor, false, (tranquilizerStrengthFloor >= getTranqKillThreshhold(target))));
+	public static void applyTranquilizer(EntityLivingBase target, int tranquilizerCap, int tranquilizerStrengthFloor){
+		if(target.hasCapability(CapabilityMonsterAI.MONSTER_AI_CAPABILITY, null)){
+			IMonsterAI mai = target.getCapability(CapabilityMonsterAI.MONSTER_AI_CAPABILITY, null);
+			if(mai.getSleepDosage() < tranquilizerCap){
+				mai.addSleepDosage(tranquilizerStrengthFloor);
+				mai.setSleepTimer(300);
 			}
 		}
-	}
-	
-	/**
-	 * 
-	 * @param target the entity
-	 * @return the strength of tranquilizer that is needed to kill the entity
-	 */
-	public static int getTranqKillThreshhold(EntityLivingBase target){
-		if(target instanceof EntityPlayer){
-			return 4;
-		}
-		Integer resistance = (Integer) tranqResistances.get(EntityList.getKey(target.getClass()).toString());
-    	return (resistance != null)?(resistance):(4);
 	}
 	
 	/**
@@ -138,7 +121,9 @@ public class CorpseHandler {
 	}
 	
 	/**
-	 * Removes all previous drops of the mob and makes them drop a corpse instead if they were killed by tranquilizing
+	 * Removes all previous drops of the mob and makes them drop a corpse instead
+	 * 
+	 * only drops a corpse if the damage source that killed them was tranquilizers
 	 * @param event
 	 */
 	@SubscribeEvent(priority=EventPriority.LOWEST)
@@ -152,8 +137,8 @@ public class CorpseHandler {
 				/*
 				 * the below are equivalent and get you the class of the entity 
 				 * 
-				 * System.out.println(EntityList.getClass(new ResourceLocation(entityName.toString())));
-				 * System.out.println(EntityList.getClass(new ResourceLocation("minecraft:sheep")));
+				 * EntityList.getClass(new ResourceLocation(entityName.toString()));
+				 * EntityList.getClass(new ResourceLocation("minecraft:sheep"));
 				 *
 				 */
 				
@@ -169,14 +154,12 @@ public class CorpseHandler {
 					//TODO: if the mob is tamed add a "Crystalline Tear of Loyalty" item which has the flavor text "sells for 25 gold"
 					
 					if (!dropStack.isEmpty()) {
-						//maybe right here have the items that would have dropped get put into the corpse item (for other items such as modded stuff)
+						//TODO: maybe right here have the items that would have dropped get put into the corpse item (for other items such as modded stuff)
 						event.getDrops().clear();
 						final EntityItem drop = new EntityItem(entity.world, entity.posX, entity.posY, entity.posZ, dropStack);
 						drop.setDefaultPickupDelay();
 						event.getDrops().add(drop);
-						//event.setCanceled(true);
 					}
-					//}
 				}
 			}
 		}
@@ -193,77 +176,109 @@ public class CorpseHandler {
 	}
 	
 	/**
-	 * initializes all vanilla mobs tranquilizer resistances
+	 * Returns the tranquilizer threshhold, 4 by default if no matching threshhold can be found
+	 * @param target the entity
+	 * @return the strength of tranquilizer that is needed to kill the entity
+	 */
+	public static int getTranqKillThreshhold(EntityLivingBase target){
+		if(target instanceof EntityPlayer){
+			return 4;
+		}
+		Integer resistance = (Integer) tranqResistances.get(EntityList.getKey(target.getClass()).toString());
+    	return (resistance != null)?(resistance):(4);
+	}
+	
+	/**
+	 * Returns the tranquilizer threshhold, 4 by default if no matching threshhold can be found
+	 * @param target the entity
+	 * @return the strength of tranquilizer that is needed to kill the entity
+	 */
+	public static int getTranqKillThreshhold(String target){
+		Integer resistance = (Integer) tranqResistances.get(target);
+    	return (resistance != null)?(resistance):(4);
+	}
+	
+	/**
+	 * sets the kill threshhold for an entity, 4 is the default
+	 * @param entity a string representing the entity, gotten from EntityList.getKey([YourEntity].getClass()).toString() if you dont know what it is
+	 * @param resistance
+	 */
+	public static void setTranqResistance(String entity, int resistance){
+		tranqResistances.put(entity, resistance);
+	}
+	
+	/**
+	 * initializes all vanilla mob tranquilizer resistances
 	 */
 	public static void makeTranqResistances(){
 		
 		//small bois
-		tranqResistances.put("minecraft:bat", 1);
-		tranqResistances.put("minecraft:chicken", 1);
-		tranqResistances.put("minecraft:ocelot", 2);
-		tranqResistances.put("minecraft:parrot", 1);
-		tranqResistances.put("minecraft:silverfish", 1);
-		tranqResistances.put("minecraft:rabbit", 1);
+		setTranqResistance("minecraft:bat", 1);
+		setTranqResistance("minecraft:chicken", 1);
+		setTranqResistance("minecraft:ocelot", 2);
+		setTranqResistance("minecraft:parrot", 1);
+		setTranqResistance("minecraft:silverfish", 1);
+		setTranqResistance("minecraft:rabbit", 1);
 		
 		//big bois
-		tranqResistances.put("minecraft:pig", 3);
-		tranqResistances.put("minecraft:sheep", 3);
-		tranqResistances.put("minecraft:llama", 4);
-		tranqResistances.put("minecraft:wolf", 3);
-		tranqResistances.put("minecraft:cow", 4);
-		tranqResistances.put("minecraft:donkey", 4);
-		tranqResistances.put("minecraft:horse", 4);
-		tranqResistances.put("minecraft:mooshroom", 4);
-		tranqResistances.put("minecraft:mule", 4);
-		tranqResistances.put("minecraft:cave_spider", 5);
-		tranqResistances.put("minecraft:spider", 5);
-		tranqResistances.put("minecraft:polar_bear", 8);
+		setTranqResistance("minecraft:pig", 3);
+		setTranqResistance("minecraft:sheep", 3);
+		setTranqResistance("minecraft:llama", 4);
+		setTranqResistance("minecraft:wolf", 3);
+		setTranqResistance("minecraft:cow", 4);
+		setTranqResistance("minecraft:donkey", 4);
+		setTranqResistance("minecraft:horse", 4);
+		setTranqResistance("minecraft:mooshroom", 4);
+		setTranqResistance("minecraft:mule", 4);
+		setTranqResistance("minecraft:cave_spider", 5);
+		setTranqResistance("minecraft:spider", 5);
+		setTranqResistance("minecraft:polar_bear", 8);
 		
 		//minecrafti bois
-		tranqResistances.put("minecraft:ghast", 2);
-		tranqResistances.put("minecraft:creeper", 5);
-		tranqResistances.put("minecraft:blaze", 6);
+		setTranqResistance("minecraft:ghast", 2);
+		setTranqResistance("minecraft:creeper", 5);
+		setTranqResistance("minecraft:blaze", 6);
 		
 		//useless bois
-		tranqResistances.put("minecraft:squid", 3);
-		tranqResistances.put("minecraft:guardian", 5);
-		tranqResistances.put("minecraft:elder_guardian", 8);
+		setTranqResistance("minecraft:squid", 3);
+		setTranqResistance("minecraft:guardian", 5);
+		setTranqResistance("minecraft:elder_guardian", 8);
 		
 		//endi bois
-		tranqResistances.put("minecraft:enderman", 8);
-		tranqResistances.put("minecraft:endermite", 3);
+		setTranqResistance("minecraft:enderman", 8);
+		setTranqResistance("minecraft:endermite", 3);
 		
 		//humaboids
-		tranqResistances.put("minecraft:villager", 4);
-		tranqResistances.put("minecraft:vindication_illager", 4);
-		tranqResistances.put("minecraft:evocation_illager", 4);
-		tranqResistances.put("minecraft:witch", 8);
+		setTranqResistance("minecraft:villager", 4);
+		setTranqResistance("minecraft:vindication_illager", 4);
+		setTranqResistance("minecraft:evocation_illager", 4);
+		setTranqResistance("minecraft:witch", 8);
 		
 		//zombois
-		tranqResistances.put("minecraft:zombie", 5);
-		tranqResistances.put("minecraft:zombie_villager", 5);
-		tranqResistances.put("minecraft:husk", 5);
-		tranqResistances.put("minecraft:zombie_pigman", 5);
-		tranqResistances.put("minecraft:zombie_horse", 7);
+		setTranqResistance("minecraft:zombie", 5);
+		setTranqResistance("minecraft:zombie_villager", 5);
+		setTranqResistance("minecraft:husk", 5);
+		setTranqResistance("minecraft:zombie_pigman", 5);
+		setTranqResistance("minecraft:zombie_horse", 7);
 		
 		//boni bois
-		tranqResistances.put("minecraft:skeleton", 8);
-		tranqResistances.put("minecraft:wither_skeleton", 9);
-		tranqResistances.put("minecraft:stray", 8);
-		tranqResistances.put("minecraft:skeleton_horse", 10);
+		setTranqResistance("minecraft:skeleton", 8);
+		setTranqResistance("minecraft:wither_skeleton", 9);
+		setTranqResistance("minecraft:stray", 8);
+		setTranqResistance("minecraft:skeleton_horse", 8);
 		
 		//slimi bois
-		tranqResistances.put("minecraft:slime", 50);
-		tranqResistances.put("minecraft:magma_cube", 50);
+		setTranqResistance("minecraft:slime", 50);
+		setTranqResistance("minecraft:magma_cube", 50);
 		
 		//build-a-bois
-		tranqResistances.put("minecraft:iron_golem", 50);
-		tranqResistances.put("minecraft:snow_golem", 50);
-		tranqResistances.put("minecraft:shulker", 50);
-		tranqResistances.put("minecraft:vex", 50);
+		setTranqResistance("minecraft:iron_golem", 50);
+		setTranqResistance("minecraft:snow_golem", 50);
+		setTranqResistance("minecraft:shulker", 50);
+		setTranqResistance("minecraft:vex", 50);
 		
 		//bossi bois
-		tranqResistances.put("minecraft:wither", 10);
-		tranqResistances.put("minecraft:enderdragonboss", 10);
+		setTranqResistance("minecraft:wither", 10);
+		setTranqResistance("minecraft:enderdragonboss", 10);
 	}
 }

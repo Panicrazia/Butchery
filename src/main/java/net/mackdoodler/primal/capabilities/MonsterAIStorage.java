@@ -19,6 +19,9 @@ public class MonsterAIStorage implements IStorage<IMonsterAI>
 		int arrayListSize = instance.getMobAI().size();
 		
 		compound.setBoolean("modified", instance.getModified());
+		compound.setInteger("sleepDosage", arrayListSize);
+		compound.setInteger("sleepThreshhold", arrayListSize);
+		compound.setInteger("sleepTimer", arrayListSize);
 		compound.setInteger("arrayListSize", arrayListSize);
 		for(int i = 0; i<arrayListSize; i++){
 			compound.setString("mobAIString"+i, instance.getMobAI().get(i));
@@ -39,5 +42,8 @@ public class MonsterAIStorage implements IStorage<IMonsterAI>
 		
 		instance.setMobAI(monsterAI);
 		instance.setModified(compound.hasKey("modified") ? (compound.getBoolean("modified")) : false);
+		instance.addSleepDosage((int) (compound.hasKey("sleepDosage") ? (compound.getInteger("sleepTimer")) : 0));
+		instance.setSleepThreshhold((int) (compound.hasKey("sleepThreshhold") ? (compound.getInteger("sleepThreshhold")) : 0));
+		instance.setSleepTimer((int) (compound.hasKey("sleepTimer") ? (compound.getInteger("sleepTimer")) : 0));
 	}
 }

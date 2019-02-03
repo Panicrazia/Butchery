@@ -1,8 +1,12 @@
 package net.mackdoodler.primal.potions;
 
+import net.mackdoodler.primal.capabilities.CapabilityMonsterAI;
+import net.mackdoodler.primal.capabilities.IMonsterAI;
 import net.mackdoodler.primal.handlers.CorpseHandler;
 import net.mackdoodler.primal.proxy.ClientProxy;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.potion.PotionEffect;
@@ -14,38 +18,38 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class PotionEventHandler {
 	
 	/**
-	 * Checks if the given mob should die from tranquilizing
+	 * Checks if the given mob should die from tranquilizing and spawns particles if they will die
 	 * @param event
 	 */
 	@SubscribeEvent
 	public void sleepKill(LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
-		PotionEffect effect = entity.getActivePotionEffect(PrimalPotions.DROWSY_POTION);
-		if(entity.world.isRemote){
-			//ClientProxy.spawnSleepParticles(entity);
-		}
-		if (effect != null && !entity.world.isRemote) {
-			/*
-			 * Code for when the drowsy effect is on a mob
-			 * 
-			 * things to think about:
-			 * higher amps cause the duration to tick down faster? <- should use division instead to make sure we 
-			 * 															dont hit negative values, and make higher 
-			 * 															strengths more dangerous
-			 * 
-			 * also should add a sleep event that when you sleep with the drowsy effect you also die
-			 */
-			if (effect.getDuration() < 30) {
-				if(entity instanceof EntitySlime){
+
+		if(entity.hasCapability(CapabilityMonsterAI.MONSTER_AI_CAPABILITY, null)){
+			IMonsterAI mai = entity.getCapability(CapabilityMonsterAI.MONSTER_AI_CAPABILITY, null);
+
+			//Necessary so we dont have to call a hashmap every tick per entity
+			if(!mai.isThreshholdSet()){
+				mai.setSleepThreshhold(CorpseHandler.getTranqKillThreshhold(entity));
+			}
+			
+			if(mai.getSleepDosage() > 0){
+				
+				if(mai.getSleepDosage() >= mai.getSleepThreshhold()){
+					if(entity.world.isRemote){
+						if(entity.world.rand.nextInt(8) == 0){
+							ClientProxy.spawnSleepParticlesForEntity(entity);
+							return;
+						}
+					}
+					if (mai.getSleepTimer() < 0) {
+						entity.attackEntityFrom(CorpseHandler.TRANQUILIZER, 1000f);
+					}
+				}
+				if (mai.getSleepTimer() < 0) {
 					CorpseHandler.applyTranquilizer(entity, 50, -1);
 				}
-				else if(effect.getAmplifier() >= CorpseHandler.getTranqKillThreshhold(entity)){
-					entity.attackEntityFrom(CorpseHandler.TRANQUILIZER, 1000f);
-				}
-				else if(effect.getAmplifier() > 0){
-					//System.out.println("New effect with a strength of: "+(effect.getAmplifier()-1));
-					CorpseHandler.applyTranquilizer(entity, 50, -2);
-				}
+				mai.setSleepTimer(mai.getSleepTimer()-1);
 			}
 		}
 	}
