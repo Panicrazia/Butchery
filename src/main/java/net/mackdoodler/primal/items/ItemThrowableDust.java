@@ -62,7 +62,7 @@ public class ItemThrowableDust extends ItemBase{
 		        motionZ = z;
 		        motionZ += playerIn.motionZ;
 
-				ClientProxy.spawnSleepParticles(worldIn, playerIn.posX, playerIn.posY+1.2f+random.nextFloat()*.4, playerIn.posZ, motionX, motionZ);
+				ClientProxy.spawnSleepParticles(worldIn, playerIn.posX, playerIn.posY+.9f+random.nextFloat()*.4, playerIn.posZ, motionX, motionZ);
 	        }
 		}
 		

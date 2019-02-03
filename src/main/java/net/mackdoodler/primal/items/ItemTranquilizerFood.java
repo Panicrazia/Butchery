@@ -1,5 +1,7 @@
 package net.mackdoodler.primal.items;
 
+import org.objectweb.asm.ClassWriter;
+
 import net.mackdoodler.primal.PrimalMod;
 import net.mackdoodler.primal.handlers.CorpseHandler;
 import net.mackdoodler.primal.potions.PrimalPotions;
@@ -68,6 +70,7 @@ public class ItemTranquilizerFood extends ItemFood {
 		case 1:
 			if(target instanceof EntityCow || target instanceof EntityZombie || target instanceof EntityChicken || target instanceof EntitySlime){
 				if(target.world.isRemote){
+	                
 					ClientProxy.spawnSleepParticlesForEntity(target);
 				}
 				stack.shrink(1);
@@ -79,6 +82,7 @@ public class ItemTranquilizerFood extends ItemFood {
 		}
 		return false;
     }
+	
 	
 	@Override
 	public int getMetadata(int damage) {
