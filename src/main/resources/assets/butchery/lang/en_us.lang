@@ -1,0 +1,28 @@
+# Items
+item.divination_rod.name=Divination Rod
+item.lunar_seed.name=Lunar Seeds
+item.tranquilizer.0.name=Lunar Lilly
+item.tranquilizer.1.name=Drugged Meat
+item.lunar_lilly_dust.name=Sleeping Powder
+item.butcher_cleaver.name=Butchery Cleaver
+item.item_butcher_mat.name=Butchery Mat
+item.corpse.name=Unidentified Corpse
+item.slimey_core.name=Slimey Core
+
+# Tooltips
+tooltip.corpse.nuthin=Nuthin
+tooltip.corpsedesc=%1$s Corpse
+tooltip.partdesc=%1$s
+
+# Blocks
+tile.butcher_mat.name=Butchers Mat
+tile.block_corpse.name=Corpse
+
+# Potions
+effect.drowsy=Drowsy
+
+# Death messages
+death.attack.PrimalMod.Tranquilized=%1$s is waiting for their prince chamring
+death.attack.PrimalMod.Tranquilized.player=%2$s helped %1$s go to sleep, how nice of them
+
+itemGroup.butchery=Butchin' Tools

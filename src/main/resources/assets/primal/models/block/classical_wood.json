@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "primal:blocks/good_wood_side",
-    "side": "primal:blocks/good_wood"
-    
-  }
-}

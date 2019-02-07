@@ -1,8 +1,0 @@
-{
-    "parent": "block/orientable",
-    "textures": {
-        "top": "primal:blocks/rotten_flesh_block",
-        "front": "primal:blocks/rotten_flesh_block_face",
-        "side": "primal:blocks/rotten_flesh_block"
-    }
-}
