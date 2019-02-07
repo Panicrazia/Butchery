@@ -50,7 +50,7 @@ public class ButcheryMod {
 	
 	public static final ButcheryCreativeTab creativeTab = new ButcheryCreativeTab();
 	
-	@SidedProxy(serverSide = "net.mackdoodler.butchery.client.CommonProxy", clientSide = "net.mackdoodler.butchery.common.ClientProxy")
+	@SidedProxy(serverSide = "net.mackdoodler.butchery.common.CommonProxy", clientSide = "net.mackdoodler.butchery.client.ClientProxy")
 	public static CommonProxy proxy;
 	
 	@Mod.EventHandler
