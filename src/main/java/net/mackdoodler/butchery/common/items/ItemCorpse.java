@@ -46,8 +46,9 @@ public class ItemCorpse extends Item{
 		
 		setTranslationKey(name);
 		setRegistryName(name);
-		
 		setCreativeTab(ButcheryMod.creativeTab);
+		
+		this.maxStackSize = 1;
 	}
 	
 	public void registerItemModel(){
