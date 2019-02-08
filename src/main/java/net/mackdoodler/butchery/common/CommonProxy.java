@@ -1,5 +1,6 @@
 package net.mackdoodler.butchery.common;
 
+import net.mackdoodler.butchery.IProxy;
 import net.mackdoodler.butchery.api.ButcheryEntries;
 import net.mackdoodler.butchery.api.TranquilizerHandler;
 import net.mackdoodler.butchery.common.capabilities.ITranquilizer;
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class CommonProxy {
+public class CommonProxy implements IProxy{
 
 	public void registerItemRenderer(Item itemBase, int i, String name) {
 	}

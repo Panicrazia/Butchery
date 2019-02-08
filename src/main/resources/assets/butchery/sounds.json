@@ -4,7 +4,7 @@
         "category": "block",
         "sounds":
         [
-            "primal:machete_chop"
+            "butchery:machete_chop"
         ]
     }
 }

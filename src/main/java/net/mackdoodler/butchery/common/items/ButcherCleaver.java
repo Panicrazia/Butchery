@@ -50,38 +50,21 @@ public class ButcherCleaver extends Item{
 	}
 	
 	/**
-     * Called when a Block is right-clicked with this Item
-     */
-	@Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-    	if(worldIn.getBlockState(pos).getBlock() == ButcheryBlocks.blockCorpse){
-    		((BlockCorpse) worldIn.getBlockState(pos).getBlock()).carveItUp(player,worldIn,pos);
-    	}
-    	
-        return EnumActionResult.PASS;
-    }
-	
-	/**
      * Chops a slimes brain out
      */
 	@Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand){
-		if(!playerIn.getEntityWorld().isRemote && target instanceof EntitySlime){
+		if(!playerIn.getEntityWorld().isRemote && target instanceof EntitySlime && ((EntitySlime)target).getSlimeSize() == 1){
 			if(target.hasCapability(CapabilityTranquilizer.TRANQUILIZER_CAPABILITY, null)){
-				
 				ITranquilizer tranquilizerCap = target.getCapability(CapabilityTranquilizer.TRANQUILIZER_CAPABILITY, null);
 				if(!tranquilizerCap.getModified()){
-					
 					if(SlimeHandler.slimeVegitization((EntityLiving)target)){
-						
 						tranquilizerCap.setModified(true);
 						
 						EntityItem entityitem = new EntityItem(target.getEntityWorld(), target.posX, target.posY, target.posZ, new ItemStack(ButcheryItems.itemSlimeyCore, 1));
-						
 						target.getEntityWorld().spawnEntity(entityitem);
-						return true;
 						
+						return true;
 					}
 				}
 			}
@@ -89,15 +72,4 @@ public class ButcherCleaver extends Item{
 		
 		return false;
     }
-	
-	/**
-	 * for testing purposes
-	 *//*
-	@Override
-    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)
-    {
-		TranquilizerHandler.applyTranquilizer(target, 10, 10);
-        return true;
-    }*/
-    
 }

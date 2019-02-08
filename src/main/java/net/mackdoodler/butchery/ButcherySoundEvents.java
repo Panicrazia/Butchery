@@ -18,7 +18,7 @@ public class ButcherySoundEvents {
 	 * @return The SoundEvent
 	 */
 	private static SoundEvent createSoundEvent(String soundName) {
-		final ResourceLocation soundID = new ResourceLocation(ButcheryMod.modId, soundName);
+		final ResourceLocation soundID = new ResourceLocation(ButcheryMod.MODID, soundName);
 		return new SoundEvent(soundID).setRegistryName(soundID);
 	}
 

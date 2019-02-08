@@ -1,6 +1,7 @@
 package net.mackdoodler.butchery.client;
 
 import net.mackdoodler.butchery.ButcheryMod;
+import net.mackdoodler.butchery.IProxy;
 import net.mackdoodler.butchery.client.particles.SleepParticles;
 import net.mackdoodler.butchery.client.renderer.tileentity.TileEntityCorpseRenderer;
 import net.mackdoodler.butchery.common.CommonProxy;
@@ -19,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class ClientProxy {
+public class ClientProxy implements IProxy{
 
 	private static final float SLEEP_PARTICLE_GENERATION_CONSTANT = .5f;
 	
@@ -40,11 +41,11 @@ public class ClientProxy {
 	}
 	
 	public void registerItemRenderer(Item item, int meta, String id) {
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(ButcheryMod.modId + ":" + id, "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(ButcheryMod.MODID + ":" + id, "inventory"));
 	}
 	
     public void preInit(FMLPreInitializationEvent e) {
-        OBJLoader.INSTANCE.addDomain(ButcheryMod.modId);
+        OBJLoader.INSTANCE.addDomain(ButcheryMod.MODID);
     }
 	
     public void init(FMLInitializationEvent e) {

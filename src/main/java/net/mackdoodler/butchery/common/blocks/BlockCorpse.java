@@ -18,6 +18,7 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -27,6 +28,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -151,9 +153,21 @@ public class BlockCorpse extends BlockTileEntity<TileEntityCorpse>{
         super.breakBlock(world, pos, state);
     }
     
-    public void carveItUp(EntityPlayer player, World worldIn, BlockPos pos){
-    	
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+    	this.spawnButcheryDrops(worldIn, pos, this.carveItUp(player, worldIn, pos));
+        return true;
+    }
+    
+    /**
+     * Retrieves an item from the tile entity and makes it appear in world
+     * @param player
+     * @param worldIn
+     * @param pos
+     */
+    public ItemStack carveItUp(EntityPlayer player, World worldIn, BlockPos pos){
         TileEntityCorpse tileEntity = (TileEntityCorpse) worldIn.getTileEntity(pos);
+        
         if(tileEntity.getUnharmed()){
             worldIn.playSound(null, pos, SoundEvents.BLOCK_SLIME_BREAK, SoundCategory.BLOCKS, 1f, 1f);
             worldIn.playSound(null, pos, SoundEvents.BLOCK_SLIME_HIT, SoundCategory.BLOCKS, 1f, 1f);
@@ -163,6 +177,7 @@ public class BlockCorpse extends BlockTileEntity<TileEntityCorpse>{
             }
             tileEntity.harm();
         }
+        
         for(int i = 0; i<=5; i++){
         	worldIn.spawnParticle(EnumParticleTypes.BLOCK_CRACK, pos.getX()+worldIn.rand.nextFloat(), pos.getY()+worldIn.rand.nextFloat()/2, pos.getZ()+worldIn.rand.nextFloat(), worldIn.rand.nextGaussian()*1D, worldIn.rand.nextGaussian()*1D, worldIn.rand.nextGaussian()*1D, 214);
         }
@@ -171,24 +186,37 @@ public class BlockCorpse extends BlockTileEntity<TileEntityCorpse>{
         worldIn.playSound(null, pos, ButcherySoundEvents.MACHETE_CHOP, SoundCategory.BLOCKS, .5f, 1f);
         
         if(worldIn.isRemote){
-    		return;
+    		return ItemStack.EMPTY;
     	}
         
-        ItemStack stak = tileEntity.getRandomItem(player);
-        
-        if(stak.isEmpty()){
-        	
-        	//its all good this thing gets rid of the tile entity too
-        	worldIn.destroyBlock(pos, true);
+        return tileEntity.getRandomItem(player);
+    }
+    
+    /**
+     * spawns the drops in world at the passed in location, if empty destroys the block, if an experience bottle spawns an orb worth 10 xp
+     * @param worldIn
+     * @param pos
+     * @param stack
+     */
+    public void spawnButcheryDrops(World worldIn, BlockPos pos, ItemStack stack){
+        if(!worldIn.isRemote){
+	    	if(stack.isEmpty()){
+	        	//its all good this thing gets rid of the tile entity too
+	        	worldIn.destroyBlock(pos, true);
+	        }
+	        else if(stack.getItem().equals(Items.EXPERIENCE_BOTTLE)){
+	        	worldIn.spawnEntity(new EntityXPOrb(worldIn, pos.getX()+.5, pos.getY()+.5, pos.getZ()+.5, 10));
+	        }
+	        else{
+		        double d0 = pos.getX()+.5;
+		        double d1 = pos.getY()+.5;
+		        double d2 = pos.getZ()+.5;
+		        
+		        EntityItem entityitem = new EntityItem(worldIn, d0, d1, d2, stack);
+		        
+		        worldIn.spawnEntity(entityitem);
+	        }
         }
-        
-        double d0 = pos.getX()+.5;
-        double d1 = pos.getY()+.5;
-        double d2 = pos.getZ()+.5;
-        
-        EntityItem entityitem = new EntityItem(worldIn, d0, d1, d2, stak);
-        
-        worldIn.spawnEntity(entityitem);
     }
     
     private ItemStack getRandomDrop(World worldIn, BlockPos pos){

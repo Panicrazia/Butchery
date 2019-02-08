@@ -8,12 +8,12 @@
         "meta": {
             "0": {
                 "textures": {
-                    "layer0": "primal:items/lunar_lilly"
+                    "layer0": "butchery:items/lunar_lilly"
                 }
             },
             "1": {
                 "textures": {
-                    "layer0": "primal:items/drugged_meat"
+                    "layer0": "butchery:items/drugged_meat"
                 }
             }
             

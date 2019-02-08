@@ -52,7 +52,7 @@ public class ItemCorpse extends Item{
 	}
 	
 	public void registerItemModel(){
-		ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ButcheryMod.modId + ":" + "block_corpse", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ButcheryMod.MODID + ":" + "block_corpse", "inventory"));
 	}
 	
 	//probs shouldmake a method to get the display name so i dont have to do the calculations over and over in getItemStackDisplayName()

@@ -19,6 +19,8 @@ public interface ITranquilizer {
 	
 	boolean isThreshholdSet();
 	
+	void setThreshholdSet(boolean threshholdSet);
+	
 	int getSleepTimer();
 	
 	void setSleepTimer(int timer);

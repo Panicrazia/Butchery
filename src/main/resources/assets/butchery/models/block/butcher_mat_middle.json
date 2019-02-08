@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
 	"textures": {
-		"1": "primal:blocks/butcher_mat_middle",
-		"particle": "primal:blocks/butcher_mat_middle"
+		"1": "butchery:blocks/butcher_mat_middle",
+		"particle": "butchery:blocks/butcher_mat_middle"
 	},
 	"elements": [
 		{

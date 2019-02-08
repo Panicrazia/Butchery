@@ -183,6 +183,11 @@ public class ButcheryEntries {
 		//rabbit corpse?
 		addEntry("minecraft:ocelot",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 1);
 		addEntry("minecraft:ocelot",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 0, 2);
+		tempTag = new NBTTagCompound();
+		tempTag.setString("corpseType", "minecraft:rabbit");
+		tempStack = new ItemStack(ButcheryItems.itemCorpse);
+		tempStack.setTagCompound(tempTag);
+		addEntry("minecraft:ocelot", new ItemStack(ButcheryItems.butcherCleaver), tempStack, -3, 1);
 
 		//vanilla
 		addButcherDrops("minecraft:parrot");
@@ -271,6 +276,7 @@ public class ButcheryEntries {
 		addButcherDrops("minecraft:blaze");
 		addEntry("minecraft:blaze",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BLAZE_ROD), 3, 6);
 		addEntry("minecraft:blaze",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.FIRE_CHARGE), -1, 1);
+		addEntry("minecraft:blaze",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 1, 1);
 		
 		//vanilla
 		addButcherDrops("minecraft:creeper");
@@ -432,17 +438,19 @@ public class ButcheryEntries {
 		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 0, 2);
 		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 1), 0, 3);
 		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.NETHER_STAR), 1, 3);
-		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 5, 10);
+		addEntry("minecraft:wither",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 7, 12);
 		
 		//vanilla
 		addButcherDrops("minecraft:enderdragonboss");
 		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.DRAGON_EGG)), 1, 1);
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Item.getItemFromBlock(Blocks.DRAGON_EGG)), -2, 1);
 		//addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver),new ItemStack(Item.getItemFromBlock(Blocks.END_PORTAL_FRAME)), 0, 1);
 		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.SKULL, 1, 5), 1, 1);
 		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BONE), 10, 20);
 		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.BEEF), 20, 52);
 		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.ENDER_PEARL), 25, 50);
 		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.DRAGON_BREATH), 10, 20);
-		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 20, 40);
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 60, 64);
+		addEntry("minecraft:enderdragonboss",new ItemStack(ButcheryItems.butcherCleaver), new ItemStack(Items.EXPERIENCE_BOTTLE), 0, 16);
 	}
 }

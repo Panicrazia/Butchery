@@ -26,36 +26,43 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = ButcheryMod.modId, name =ButcheryMod.name, version = ButcheryMod.version, acceptedMinecraftVersions = "[1.12.2]" )
+@Mod(modid = ButcheryMod.MODID, name =ButcheryMod.MODNAME, version = ButcheryMod.VERSION, acceptedMinecraftVersions = "[1.12.2]", dependencies = "after:crafttweaker;")
 public class ButcheryMod {
 	/* 
-	 * butchery mod TODO:
+	 * butchery mod ideas TODO:
 	 * 
-	 * placeable drugged meat that animals and zombies eat
+	 * placeable drugged meat that carnivores and zombies path to and eat
 	 * 
-	 * expand tranqilizer system even moar
+	 * tranquilizer splash potions using the drowsy potion effect which continuously applies more tranquilizers up to like 20 or some shit i dunno
 	 * 
-	 * sleepy dust particles
-	 * 	-use with lunar dust, slime explosions and if possible instead of the vanilla potion particles
+	 * tranquilizer arrows (5 tranq per?)
 	 * 
-	 * clean up and disconnect from all this primal bullshit for release
+	 * item which places down a vegitized slime, crafted with 4 slimeballs in a square
+	 * 	^possibly a custom entityItem for these which when put into the world destroys itself and spawns a vegitized slime
+	 *  ^slimes spawned with this item dont despawn
+	 * 
+	 * add oredict in recipes
+	 * 
+	 * test if ocelots drop the correct item
+	 * 
+	 * large slimes leave behind a slime residue (basically the thinnest snow layer but slimey) that slows and can be shovelled for a slimeball, or knocked away into slimeballs using water
 	 */
 	
-	public static final String modId = "butchery";
-	public static final String name = "Butchery";
-	public static final String version = "1.0.0";
+	public static final String MODID = "butchery";
+	public static final String MODNAME = "Butchery";
+	public static final String VERSION = "1.0.0";
 	
-	@Mod.Instance(modId)
+	@Mod.Instance(MODID)
 	public static ButcheryMod instance;
 	
 	public static final ButcheryCreativeTab creativeTab = new ButcheryCreativeTab();
 	
 	@SidedProxy(serverSide = "net.mackdoodler.butchery.common.CommonProxy", clientSide = "net.mackdoodler.butchery.client.ClientProxy")
-	public static CommonProxy proxy;
+	public static IProxy proxy;
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		System.out.println(name + " is loading!");
+		System.out.println(MODNAME + " is loading!");
 		MinecraftForge.EVENT_BUS.register(new CorpseHandler());
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 		MinecraftForge.EVENT_BUS.register(new SlimeHandler());

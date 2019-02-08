@@ -36,7 +36,7 @@ public class SleepParticles extends Particle{
 															.addElement(DefaultVertexFormats.NORMAL_3B)
 															.addElement(DefaultVertexFormats.PADDING_1B);
 	
-	public ResourceLocation texture = new ResourceLocation("primal:particles/sleep_particle");
+	public ResourceLocation texture = new ResourceLocation("butchery:particles/sleep_particle");
     private float rotational = 0f;
 	
 	public SleepParticles(TextureManager textureManagerIn, World worldIn, double posXIn, double posYIn, double posZIn, double motionXIn, double motionZIn) {
@@ -47,8 +47,8 @@ public class SleepParticles extends Particle{
         this.particleScale = (this.rand.nextFloat() * 0.5F + 0.5F) * 2.0F;
         this.particleMaxAge = (int)(100.0F / (this.rand.nextFloat() * 0.5F + 0.1F));
 		this.motionY = -0.01D - rand.nextDouble()*.005;
-		this.motionX = motionXIn;
-		this.motionZ = motionZIn;
+		this.motionX = motionXIn*2.2;
+		this.motionZ = motionZIn*2.2;
 		this.rotational = .02f+rand.nextFloat() * 0.03F;
 		
 	    TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(texture.toString());
@@ -62,8 +62,8 @@ public class SleepParticles extends Particle{
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
 
-		this.motionX*=.95f;
-		this.motionZ*=.95f;
+		this.motionX*=.88f;
+		this.motionZ*=.88f;
 		
 		if (this.particleAge++ >= this.particleMaxAge){
 		    this.setExpired();

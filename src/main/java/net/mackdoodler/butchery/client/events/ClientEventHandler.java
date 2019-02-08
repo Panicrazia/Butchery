@@ -13,13 +13,13 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod.EventBusSubscriber(modid = ButcheryMod.modId)
+@Mod.EventBusSubscriber(modid = ButcheryMod.MODID)
 public class ClientEventHandler {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void onTextureStitch(TextureStitchEvent event) {
     	//holy FUCK I spent literal DAYS trying to get particles working and THIS was the part I was missing jesus christ
-        event.getMap().registerSprite(new ResourceLocation(ButcheryMod.modId, "particles/sleep_particle"));
+        event.getMap().registerSprite(new ResourceLocation(ButcheryMod.MODID, "particles/sleep_particle"));
     }
 }

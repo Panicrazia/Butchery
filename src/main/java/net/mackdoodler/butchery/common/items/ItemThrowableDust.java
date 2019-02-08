@@ -3,6 +3,7 @@ package net.mackdoodler.butchery.common.items;
 import java.util.Random;
 
 import net.mackdoodler.butchery.ButcheryMod;
+import net.mackdoodler.butchery.api.TranquilizerHandler;
 import net.mackdoodler.butchery.client.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -13,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
@@ -38,29 +40,28 @@ public class ItemThrowableDust extends Item{
      */
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-		if(worldIn.isRemote){
-			Random random = new Random();
+		Random random = worldIn.rand;
 
-			//float rotationPitchIn = playerIn.rotationPitch;
-			float rotationPitchIn = 1f;
-			float rotationYawIn = playerIn.rotationYaw;
-			
-			double motionX = 0;
-			double motionZ = 0;
-			
-			double x = -MathHelper.sin(rotationYawIn * 0.017453292F) * MathHelper.cos(rotationPitchIn * 0.017453292F);
-			double y = -MathHelper.sin((rotationPitchIn) * 0.017453292F);
-			double z = MathHelper.cos(rotationYawIn * 0.017453292F) * MathHelper.cos(rotationPitchIn * 0.017453292F);
-			
-	        
-	        float velocity = .1F;
-	        float inaccuracy = 50.0F;
-	        
-	        float f = MathHelper.sqrt(x * x + y * y + z * z);
-	        
-	        double x2 = x / (double)f;
-	        double z2 = z / (double)f;
-	        
+		float rotationPitchIn = 1f;
+		float rotationYawIn = playerIn.rotationYaw;
+		
+		double motionX = 0;
+		double motionZ = 0;
+		
+		double x = -MathHelper.sin(rotationYawIn * 0.017453292F) * MathHelper.cos(rotationPitchIn * 0.017453292F);
+		double y = -MathHelper.sin((rotationPitchIn) * 0.017453292F);
+		double z = MathHelper.cos(rotationYawIn * 0.017453292F) * MathHelper.cos(rotationPitchIn * 0.017453292F);
+		
+        
+        float velocity = .1F;
+        float inaccuracy = 50.0F;
+        
+        float f = MathHelper.sqrt(x * x + y * y + z * z);
+        
+        double x2 = x / (double)f;
+        double z2 = z / (double)f;
+        
+		if(worldIn.isRemote){
 	        for(int i = 0; i<50; i++){
 	        	x = x2;
 	        	z = z2;
@@ -77,7 +78,13 @@ public class ItemThrowableDust extends Item{
 	        }
 		}
 		
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
+		for(Entity element : playerIn.getEntityWorld().getEntitiesWithinAABBExcludingEntity(playerIn, new AxisAlignedBB(playerIn.posX-2.0+(x2*2), playerIn.posY-3.0, playerIn.posZ-2.0+(z2*2), playerIn.posX+2.0+(x2*2), playerIn.posY+3.0, playerIn.posZ+2.0+(z2*2)))){
+			if(element instanceof EntityLivingBase){
+				TranquilizerHandler.applyTranquilizer((EntityLivingBase) element, 50, 1);
+			}
+		}
+		
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     }
 	
 	@Override

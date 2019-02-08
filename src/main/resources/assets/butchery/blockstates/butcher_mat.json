@@ -1,17 +1,17 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "primal:butcher_mat_middle"
+        "model": "butchery:butcher_mat_middle"
     },
     "variants": {
         "normal": [{}],
         "inventory": [{}],
         "stick": {
-            "true":    {"model": "primal:butcher_mat_stick"},
+            "true":    {"model": "butchery:butcher_mat_stick"},
             "false":    {}
         },
         "edge": {
-            "true":    {"model": "primal:butcher_mat_stick2"},
+            "true":    {"model": "butchery:butcher_mat_stick2"},
             "false":    {}
         },
         "orient": {

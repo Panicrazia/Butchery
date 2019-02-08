@@ -8,6 +8,7 @@ import net.mackdoodler.butchery.common.capabilities.CapabilityTranquilizer;
 import net.mackdoodler.butchery.common.capabilities.ITranquilizer;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -31,23 +32,27 @@ public class TranquilizerHandler {
 			//Necessary so we dont have to call a hashmap per tick per entity
 			if(!mai.isThreshholdSet()){
 				mai.setSleepThreshhold(TranquilizerHandler.getTranqKillThreshhold(entity));
+				mai.setThreshholdSet(true);
 			}
 			
 			if(mai.getSleepDosage() > 0){
-				
 				if(mai.getSleepDosage() >= mai.getSleepThreshhold()){
 					if(entity.world.isRemote){
 						if(entity.world.rand.nextInt(8) == 0){
 							ClientProxy.spawnSleepParticlesForEntity(entity);
-							return;
 						}
 					}
-					if (mai.getSleepTimer() < 0) {
+					else if (mai.getSleepTimer() < 0) {
 						entity.attackEntityFrom(TranquilizerHandler.TRANQUILIZER, 1000f);
 					}
 				}
 				if (mai.getSleepTimer() < 0) {
-					TranquilizerHandler.applyTranquilizer(entity, 50, -1);
+					if(entity instanceof EntitySlime){
+						TranquilizerHandler.applyTranquilizer(entity, 50, 0);
+					}
+					else{
+						TranquilizerHandler.applyTranquilizer(entity, 50, -1);
+					}
 				}
 				mai.setSleepTimer(mai.getSleepTimer()-1);
 			}
@@ -173,18 +178,18 @@ public class TranquilizerHandler {
 		setTranqResistance("minecraft:skeleton_horse", 8);
 		
 		//slimi bois
-		setTranqResistance("minecraft:slime", 50);
-		setTranqResistance("minecraft:magma_cube", 50);
+		setTranqResistance("minecraft:slime", 51);
+		setTranqResistance("minecraft:magma_cube", 51);
 		
 		//build-a-bois (ie things that shouldn't be able to be tranquilized)
-		setTranqResistance("minecraft:iron_golem", 100);
-		setTranqResistance("minecraft:snow_golem", 100);
-		setTranqResistance("minecraft:shulker", 100);
-		setTranqResistance("minecraft:vex", 100);
+		setTranqResistance("minecraft:iron_golem", 51);
+		setTranqResistance("minecraft:snow_golem", 51);
+		setTranqResistance("minecraft:shulker", 51);
+		setTranqResistance("minecraft:vex", 51);
 		
 		//bossi bois
-		setTranqResistance("minecraft:wither", 10);
-		setTranqResistance("minecraft:enderdragonboss", 10);
+		setTranqResistance("minecraft:wither", 25);
+		setTranqResistance("minecraft:enderdragonboss", 35);
 	}
 	
 }

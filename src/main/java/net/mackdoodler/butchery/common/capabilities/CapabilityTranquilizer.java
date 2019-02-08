@@ -10,7 +10,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 public class CapabilityTranquilizer implements ICapabilitySerializable<NBTBase>{
 	
-	public static final ResourceLocation TRANQUILIZER_CAPABILITY_ID = new ResourceLocation(ButcheryMod.modId, "Tranquilizer"); 
+	public static final ResourceLocation TRANQUILIZER_CAPABILITY_ID = new ResourceLocation(ButcheryMod.MODID, "Tranquilizer"); 
 	
 	@CapabilityInject(ITranquilizer.class) 
 	public static final Capability<ITranquilizer> TRANQUILIZER_CAPABILITY = null; 

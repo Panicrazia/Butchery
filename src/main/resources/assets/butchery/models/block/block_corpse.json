@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "primal:blocks/fleshy",
-		"1": "primal:blocks/osteo",
-		"particle": "primal:blocks/fleshy"
+		"0": "butchery:blocks/fleshy",
+		"1": "butchery:blocks/osteo",
+		"particle": "butchery:blocks/fleshy"
 	},
 	"elements": [
 		{

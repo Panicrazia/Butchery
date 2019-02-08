@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "butchery:slimey_core"
+		}
+	],
+	"result": {
+		"item": "minecraft:slime_ball",
+		"data": 0,
+		"count": 4
+	}
+}

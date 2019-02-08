@@ -10,7 +10,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 
-public class Tranquilizer implements  ITranquilizer{
+public class Tranquilizer implements ITranquilizer{
 
 	private ArrayList<String> monsterAI = new ArrayList<String>(0);
 	private boolean modified = false;
@@ -63,7 +63,12 @@ public class Tranquilizer implements  ITranquilizer{
 	@Override
 	public void setSleepThreshhold(int threshhold) {
 		this.sleepThreshhold = threshhold;
-		this.threshholdSet = true;
+		//this.threshholdSet = true;
+	}
+	
+	@Override
+	public void setThreshholdSet(boolean th) {
+		this.threshholdSet = th;
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package net.mackdoodler.butchery.common.blocks;
 
+import net.mackdoodler.butchery.ButcheryMod;
 import net.mackdoodler.butchery.client.renderer.tileentity.TileEntityCorpseRenderer;
 import net.mackdoodler.butchery.common.tileentity.TileEntityCorpse;
 import net.minecraft.block.Block;
@@ -24,7 +25,7 @@ public class ButcheryBlocks {
 				blockCorpse,
 				cropLunarLilly
 		);
-		GameRegistry.registerTileEntity(blockCorpse.getTileEntityClass(), new ResourceLocation("corpse"));
+		GameRegistry.registerTileEntity(blockCorpse.getTileEntityClass(), new ResourceLocation(ButcheryMod.MODID+":corpse"));
 	}
 	
 	public static void registerItemBlocks(IForgeRegistry<Item> registry){

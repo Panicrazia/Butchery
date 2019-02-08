@@ -11,7 +11,7 @@ public class ButcheryItems {
 	public static ButcherCleaver butcherCleaver = new ButcherCleaver("butcher_cleaver");
 	public static ItemButcherMat itemButcherMat = new ItemButcherMat("item_butcher_mat");
 	public static ItemCorpse itemCorpse = new ItemCorpse("item_corpse");
-	public static ItemSlimeyCore itemSlimeyCore = new ItemSlimeyCore("item_slimey_core");
+	public static ItemSlimeyCore itemSlimeyCore = new ItemSlimeyCore("slimey_core");
 	
 	public static ItemLunarSeed lunarSeed = new ItemLunarSeed("lunar_seed");
 	public static ItemTranquilizerFood itemTranquilizer = new ItemTranquilizerFood("tranquilizer");

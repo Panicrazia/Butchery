@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "primal:items/butcher_cleaver"
+        "layer0": "butchery:items/butcher_cleaver"
     }
 }

@@ -7,7 +7,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class PotionDrowsy extends Potion{
-	public static ResourceLocation POTION_ICONS = new ResourceLocation("primal:textures/gui/potion_icons.png");
+	public static ResourceLocation POTION_ICONS = new ResourceLocation("butchery:textures/gui/potion_icons.png");
 	public final String PotionName = "drowsy";
 	
 	public PotionDrowsy() {

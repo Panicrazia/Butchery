@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "butchery:tranquilizer",
+			"data": 0
+		}
+	],
+	"result": {
+		"item": "butchery:lunar_lilly_dust",
+		"data": 0,
+		"count": 1
+	}
+}

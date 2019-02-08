@@ -2,8 +2,10 @@ package net.mackdoodler.butchery.common.handlers;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Random;
 
 import net.mackdoodler.butchery.api.TranquilizerHandler;
+import net.mackdoodler.butchery.client.ClientProxy;
 import net.mackdoodler.butchery.common.capabilities.CapabilityTranquilizer;
 import net.mackdoodler.butchery.common.capabilities.ITranquilizer;
 import net.mackdoodler.butchery.common.potions.ButcheryPotions;
@@ -30,15 +32,24 @@ public class SlimeHandler {
 		EntityLivingBase entity = event.getEntityLiving();
 		
 		if(entity instanceof EntitySlime){
-			PotionEffect effect = entity.getActivePotionEffect(ButcheryPotions.DROWSY_POTION);
-			
-			if (effect != null && !entity.world.isRemote) {
-				for(Entity element : entity.getEntityWorld().getEntitiesWithinAABBExcludingEntity(entity, new AxisAlignedBB(entity.posX-1.5, entity.posY-1, entity.posZ-1.5, entity.posX+1.5, entity.posY+2, entity.posZ+1.5))){
-					if(element instanceof EntityLivingBase){
-						TranquilizerHandler.applyTranquilizer((EntityLivingBase) element, 50, effect.getAmplifier());
+			if(entity.hasCapability(CapabilityTranquilizer.TRANQUILIZER_CAPABILITY, null)){
+				ITranquilizer mai = entity.getCapability(CapabilityTranquilizer.TRANQUILIZER_CAPABILITY, null);
+				
+				if(mai.getSleepDosage() > 0){
+					
+					for(Entity element : entity.getEntityWorld().getEntitiesWithinAABBExcludingEntity(entity, new AxisAlignedBB(entity.posX-3.0, entity.posY-1.5, entity.posZ-3.0, entity.posX+3.0, entity.posY+2, entity.posZ+3.0))){
+						if(element instanceof EntityLivingBase){
+							TranquilizerHandler.applyTranquilizer((EntityLivingBase) element, 50, mai.getSleepDosage());
+						}
+					}
+					
+					if(entity.world.isRemote){
+						Random randy = entity.world.rand;
+						for(int i = 0; i < 50; i++){
+							ClientProxy.spawnSleepParticles(entity.world, entity.posX, entity.posY+.4f, entity.posZ, ((randy.nextDouble()*2.0)-1.0)*.15, ((randy.nextDouble()*2.0)-1.0)*.15);
+						}
 					}
 				}
-				//If a slime dies in the forest and he has tranquilizers, does he explode?
 			}
 		}
 	}

@@ -1,7 +1,5 @@
 package net.mackdoodler.butchery.common.items;
 
-import org.objectweb.asm.ClassWriter;
-
 import net.mackdoodler.butchery.ButcheryMod;
 import net.mackdoodler.butchery.api.TranquilizerHandler;
 import net.mackdoodler.butchery.client.ClientProxy;
@@ -10,12 +8,21 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityCaveSpider;
+import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.AbstractHorse;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntityRabbit;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
@@ -36,7 +43,7 @@ public class ItemTranquilizerFood extends ItemFood {
 	protected String name;
 	
 	public ItemTranquilizerFood(String name) {
-		super(0, 0, false);//switch this to true and have it tranq friendo wolves too
+		super(0, 0, false);
 		this.name = name;
 		setTranslationKey(name);
 		setRegistryName(name);
@@ -44,12 +51,11 @@ public class ItemTranquilizerFood extends ItemFood {
 		setHasSubtypes(true);
 		
 		this.setAlwaysEdible();
-		this.setPotionEffect(new PotionEffect(ButcheryPotions.DROWSY_POTION, 300, 5, false, true), 1f);
+		this.setPotionEffect(new PotionEffect(ButcheryPotions.DROWSY_POTION, 600 * 20, 5, false, false), 1f);
 	}
 	
 	public void registerItemModel(){
 		 for(int i = 0; i < 2; i++){
-			 //PrimalMod.proxy.registerItemRenderer(this, i, name);
 			 ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(getRegistryName(), "meta=" + i));
 		 }
 	}
@@ -62,15 +68,25 @@ public class ItemTranquilizerFood extends ItemFood {
     {
 		switch(stack.getItemDamage()){
 		case 0:
-			TranquilizerHandler.applyTranquilizer(target, 10);
-			stack.shrink(1);
-			return true;
+			//Lunar Lilly
+			if(target instanceof EntityCow || 
+					target instanceof EntityPig || 
+					target instanceof EntitySheep || 
+					target instanceof AbstractHorse || 
+					target instanceof EntityRabbit || 
+					target instanceof EntityBat){
+				TranquilizerHandler.applyTranquilizer(target, 4);
+				stack.shrink(1);
+				return true;
+			}
 		case 1:
-			if(target instanceof EntityCow || target instanceof EntityZombie || target instanceof EntityChicken || target instanceof EntitySlime){
-				if(target.world.isRemote){
-	                
-					ClientProxy.spawnSleepParticlesForEntity(target);
-				}
+			//Drugged Meat
+			if(target instanceof EntityZombie || 
+					target instanceof EntitySpider || 
+					target instanceof EntityWolf || 
+					target instanceof EntityOcelot || 
+					target instanceof EntityPolarBear){
+				TranquilizerHandler.applyTranquilizer(target, 10, 10);
 				stack.shrink(1);
 				return true;
 			}
@@ -85,7 +101,6 @@ public class ItemTranquilizerFood extends ItemFood {
 	@Override
 	public int getMetadata(int damage) {
 		return damage;
-		//return damage > max ? damage : max;
 	}
 	
 	@Override

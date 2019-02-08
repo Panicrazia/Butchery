@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "primal:items/slime_core"
+        "layer0": "butchery:items/slime_core"
     }
 }

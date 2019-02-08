@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class ButcheryCreativeTab extends CreativeTabs{
 	public ButcheryCreativeTab() {
-		super(ButcheryMod.modId);
+		super(ButcheryMod.MODID);
 	}
 
 	@Override
