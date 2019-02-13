@@ -1,7 +1,10 @@
 {
 	"forge_marker": 1,
 	"defaults": {
-		"model": "butchery:crop_lilly0"
+		"model": "butchery:crop_lilly0",
+		"textures": { "bulb": "butchery:blocks/lunar_lilly/bulb0",
+		              "bulbbaby": "butchery:blocks/lunar_lilly/bulb0"
+		            }
 	},
 	"variants": {
 		"age": {
@@ -17,32 +20,38 @@
 			},
 			"2": {
 				"textures": {
-					"stem": "butchery:blocks/lunar_lilly/2"
+					"stem": "butchery:blocks/lunar_lilly/2",
+                    "bulbbaby": "butchery:blocks/lunar_lilly/bulb2"
 				}
 			},
 			"3": {
 				"textures": {
-					"stem": "butchery:blocks/lunar_lilly/3"
+					"stem": "butchery:blocks/lunar_lilly/3",
+                    "bulbbaby": "butchery:blocks/lunar_lilly/bulb3"
 				}
 			},
 			"4": {
 				"textures": {
-					"stem": "butchery:blocks/lunar_lilly/4"
+					"stem": "butchery:blocks/lunar_lilly/4",
+                    "bulbbaby": "butchery:blocks/lunar_lilly/bulb4"
 				}
 			},
 			"5": {
 				"textures": {
-					"stem": "butchery:blocks/lunar_lilly/5"
+					"stem": "butchery:blocks/lunar_lilly/5",
+                    "bulb": "butchery:blocks/lunar_lilly/bulb5"
 				}
 			},
 			"6": {
 				"textures": {
-					"stem": "primal:blocks/lunar_lilly/6"
+					"stem": "butchery:blocks/lunar_lilly/6",
+                    "bulb": "butchery:blocks/lunar_lilly/bulb6"
 				}
 			},
 			"7": {
 				"textures": {
-					"stem": "butchery:blocks/lunar_lilly/7"
+					"stem": "butchery:blocks/lunar_lilly/7",
+                    "bulb": "butchery:blocks/lunar_lilly/bulb7"
 				}
 			}
 		}
