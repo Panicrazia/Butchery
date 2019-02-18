@@ -221,9 +221,7 @@ public class BlockButcherMat extends Block{
      * helper method to destroy all 9 tiles of the mat
      */
     private void destroyMat(IBlockState state, World worldIn, BlockPos pos){
-    	//System.out.println("breakin bitch");
-    	
-    	this.dropBlockAsItem(worldIn, pos, state, 0);
+    	//this.dropBlockAsItem(worldIn, pos, state, 0);
     	worldIn.setBlockState(pos, net.minecraft.init.Blocks.AIR.getDefaultState(), worldIn.isRemote ? 11 : 3);
     	
     	int numbah = findPosition(state,worldIn,pos);

@@ -11,6 +11,8 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class ButcheryBlocks {
@@ -34,10 +36,9 @@ public class ButcheryBlocks {
 		);
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public static void registerModels(){
 		//registerItemModel methods go here
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCorpse.class, new TileEntityCorpseRenderer());
 	}
-	
-	
 }

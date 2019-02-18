@@ -25,15 +25,18 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = ButcheryMod.MODID, name =ButcheryMod.MODNAME, version = ButcheryMod.VERSION, acceptedMinecraftVersions = "[1.12.2]", dependencies = "after:crafttweaker;")
 public class ButcheryMod {
 	/* 
 	 * butchery mod ideas TODO:
 	 * 
-	 * placeable drugged meat that carnivores and zombies path to and eat
+	 * placeable drugged meat that carnivores and zombies path to and eat (means a new ai for  eligible mobs)
 	 * 
-	 * tranquilizer splash potions using the drowsy potion effect which continuously applies more tranquilizers up to like 20 or some shit i dunno
+	 * tranquilizer splash potions using the drowsy potion effect which continuously applies more tranquilizers up to like 20 or some shit i dunno 
+	 * 			(just need to find out how to make a splash potion)
 	 * 
 	 * tranquilizer arrows (5 tranq per?)
 	 * 
@@ -42,8 +45,6 @@ public class ButcheryMod {
 	 *  ^slimes spawned with this item dont despawn
 	 * 
 	 * add oredict in recipes
-	 * 
-	 * test if ocelots drop the correct item
 	 * 
 	 * large slimes leave behind a slime residue (basically the thinnest snow layer but slimey) that slows and can be shovelled for a slimeball, or knocked away into slimeballs using water
 	 */
@@ -57,7 +58,7 @@ public class ButcheryMod {
 	
 	public static final ButcheryCreativeTab creativeTab = new ButcheryCreativeTab();
 	
-	@SidedProxy(serverSide = "net.mackdoodler.butchery.common.CommonProxy", clientSide = "net.mackdoodler.butchery.client.ClientProxy")
+	@SidedProxy(clientSide = "net.mackdoodler.butchery.client.ClientProxy", serverSide = "net.mackdoodler.butchery.common.CommonProxy")
 	public static IProxy proxy;
 	
 	@Mod.EventHandler
@@ -102,6 +103,7 @@ public class ButcheryMod {
 			ButcheryBlocks.registerItemBlocks(event.getRegistry());
 		}
 		
+		@SideOnly(Side.CLIENT)
 		@SubscribeEvent
 		public static void registerItems(ModelRegistryEvent event) {
 			ButcheryItems.registerModels();
